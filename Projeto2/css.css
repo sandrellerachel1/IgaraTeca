@@ -1,0 +1,49 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Arial Rounded MT;
+	
+}
+body{
+	background-color: #BDBDBD;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+}
+#menu{
+	height: 90px;
+	background-color: black;
+	
+}
+#menu ul{
+	margin: 0;
+	
+	list-style: none;
+}
+
+#menu ul li{
+	text-align: center;
+	display: inline;
+	font-family: Arial Rounded MT;
+}
+
+#menu ul li a{
+	text-align: center;
+	padding: 40px ;
+	margin: auto;
+	display: inline-block;
+	color: orange;
+	text-decoration: none;
+}
+#menu ul li a:hover{
+	text-decoration: underline;
+}
+#mot{
+	width: 450px;
+	height: 500px;
+	border: groove 3px orange;
+	margin: auto;
+	padding-top: 10px;
+	border-radius: 3px; 
+}
