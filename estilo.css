@@ -1,0 +1,26 @@
+#tudo {
+	width: 900px;
+	margin:0 auto;
+} 
+body{
+	background-color: black; 
+}
+#cabecalho{
+  background-color: #000033;
+  height: 120px;
+  color: #FFFFFF;
+  text-align: center;
+  font-family: Arial,Helvetica, san-serif;
+  font-size: 16px;
+  line-height: 120px;
+}
+#menu{
+	background-color: #FFFF00;
+	width: 270px;
+	float: left;
+}
+#conteudo{
+	background-color: white;
+	float: right;
+	width: 620px;
+}
