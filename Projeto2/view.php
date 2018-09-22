@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8">
-	<title>GAD-Biblio 1.0</title>
+	<title>Resumo</title>
 	<link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
@@ -15,9 +15,20 @@
 				<li><a href="motivo.php">Motivos</a></li>
 				<li><a href="sobre.php">Sobre</a></li>
 				<li><a href="desenvolvedores.php">Desenvolvedores</a></li>
+				<tr><td>Login</td></tr>
 			</strong>
 		</ul>
-		<h1>GAD-Biblio 1.0</h1>
 	</div>
+	<div id="view"><center>
+		<?php
+			$dado=$_GET['id'];
+			$arquivo= file('livro.csv');
+			$linha= explode(";;;", $arquivo[$dado]);
+			echo '<h1>'.$linha[0]." ".'</h1>';
+			echo '<p>'."Tipo: ".'<strong>'.$linha[1].'</strong></p><br>';
+			echo '<p>'."Resumo: ". $linha[2].'</p>';
+		?><br>
+		<p><a href="livros.php" class="vol">Voltar</a></strong></p>
+	</center></div>
 </body>
 </html>

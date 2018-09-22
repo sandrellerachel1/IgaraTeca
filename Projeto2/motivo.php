@@ -10,19 +10,15 @@
 		<ul>
 			<strong>
 				<li><a href="index.php">Início</a></li>
-				<li><a href="#">Livros</a></li>
+				<li><a href="cadLivros.php">Livros</a></li>
 				<li><a href="motivo.php">Motivos</a></li>
-				<li><a href="#">Sobre</a></li>
-				<li><a href="#">Desenvolvedores</a></li>
+				<li><a href="sobre.php">Sobre</a></li>
+				<li><a href="desenvolvedores.php">Desenvolvedores</a></li>
 			</strong>
 		</ul>
 	</div>
 	<div id="mot"><center>
 		<p>GAD – Biblio</p><br>
-		<p> Professor: Alexandre Strapação Guedes Vianna</p>
-		<p>	Grupo: Ricardo Maranhão, Rivaldo Valle, Jackson da Silva, Sandrelle Rachel, Alessandro José, José Augusto, Raquel Gabrielly.
-		</p><br>
-
 		<p> Criar um sistema automático que gerencie bibliotecas.
 			O Sistema-de-gestão-para-bibliotecas gerencia o acervo de livros, DVD's, Blue-Ray’s e periódicos, permitindo cadastrar os empréstimos, devoluções e as baixas. E através da Internet é possível a consulta ao acervo listados por obra, aluno e outros parâmetros e a solicitação de reservas.
 		</p><br>

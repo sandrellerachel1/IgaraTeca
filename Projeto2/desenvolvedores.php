@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>GAD-Biblio 1.0</title>
+	<title>Desenvolvedores</title>
 	<link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
@@ -17,7 +17,10 @@
 				<li><a href="desenvolvedores.php">Desenvolvedores</a></li>
 			</strong>
 		</ul>
-		<h1>GAD-Biblio 1.0</h1>
 	</div>
+	<div id="desen"><center>
+		<p><strong>Professor:</strong> Alexandre Strapação Guedes Vianna.</p>
+		<p><strong>Grupo:</strong> Ricardo Maranhão, Rivaldo Valle, Jackson da Silva, Sandrelle Rachel, Alessandro José, José Augusto, Raquel Gabrielly.</p><br>
+	</center></div>
 </body>
 </html>
