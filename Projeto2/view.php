@@ -15,7 +15,7 @@
 				<li><a href="motivo.php">Motivos</a></li>
 				<li><a href="sobre.php">Sobre</a></li>
 				<li><a href="desenvolvedores.php">Desenvolvedores</a></li>
-				<tr><td>Login</td></tr>
+				<li><a href="#">Login</a></li>
 			</strong>
 		</ul>
 	</div>
@@ -26,7 +26,7 @@
 			$linha= explode(";;;", $arquivo[$dado]);
 			echo '<h1>'.$linha[0]." ".'</h1>';
 			echo '<p>'."Tipo: ".'<strong>'.$linha[1].'</strong></p><br>';
-			echo '<p>'."Resumo: ". $linha[2].'</p>';
+			echo '<p>'.'<strong>'."Resumo: ".'</strong>'. $linha[2].'</p>';
 		?><br>
 		<p><a href="livros.php" class="vol">Voltar</a></strong></p>
 	</center></div>

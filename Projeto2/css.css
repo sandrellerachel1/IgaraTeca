@@ -29,7 +29,6 @@ h1{
 
 #menu ul li{
 	display: inline;
-	font-family: Arial Rounded MT;
 	text-align: center;
 }
 
@@ -66,8 +65,9 @@ h1{
 }
 a{
 	text-decoration: none;
-	color: blue;
+	color: #8A0808;
 	text-align: center;
+	cursor: pointer;
 }
 #view{
 	margin: auto;
@@ -112,4 +112,22 @@ table tr th{
 #livro table tr td{
 	border:solid 1px;
 
+}
+#destaque{
+	margin: 20px 990px;
+	padding: 10px;
+	border:groove 2px #8A0808;
+	border-radius: 7px;
+	width: 130px;
+	height: 300px;
+	padding-top: 5px;
+}
+#dest{
+	text-align: right;
+    margin-top: 80px;
+    padding-right: 175px;
+    color: #8A0808;
+}
+#destaque a:hover{
+	text-decoration: underline;
 }
