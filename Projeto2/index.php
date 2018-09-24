@@ -15,7 +15,7 @@
 				<li><a href="motivo.php">Motivos</a></li>
 				<li><a href="sobre.php">Sobre</a></li>
 				<li><a href="desenvolvedores.php">Desenvolvedores</a></li>
-				<li><a href="#">Login</a></li>
+				<li><a href="login.php">Login</a></li>
 			</strong>
 		</ul>
 		<h1>GAD-Biblio 1.0</h1>
