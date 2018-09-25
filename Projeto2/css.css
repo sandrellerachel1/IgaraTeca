@@ -142,3 +142,15 @@ ul {
     overflow: hidden;
 
   }
+  .copyright {
+	color: orange;
+	height: 90px;
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0;
+	width: 100%;
+}
+.copyright p {
+	text-align: center;
+}
