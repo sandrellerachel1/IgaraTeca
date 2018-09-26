@@ -5,7 +5,8 @@
 	
 }
 body{
-	background-color: #BDBDBD;
+	background-color: white;
+	background-image: url(), url();
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -15,22 +16,9 @@ h1{
 	margin: auto;
 	padding-top: 20px;
 	text-align: center;
-}
-#menu{
-	height: 90px;
-	background-color: black;
-	
-}
-#menu ul{
-	margin: 0;
-	text-align: center;
-	list-style: none;
+
 }
 
-#menu ul li{
-	display: inline;
-	text-align: center;
-}
 
 #menu ul li a{
 	padding: 40px ;
@@ -38,6 +26,7 @@ h1{
 	display: inline-block;
 	color: orange;
 	text-decoration: none;
+
 }
 #menu ul li a:hover{
 	text-decoration: underline;
@@ -131,4 +120,25 @@ table tr th{
 #destaque a:hover{
 	text-decoration: underline;
 }
-h1
+#lista{
+    float: left;
+
+}
+ul {
+   list-style-type: none;
+   margin: 0;
+   overflow: hidden;
+   background-color:;
+   padding: 36px 32px;
+}
+#home {
+	background-color:;
+    background-image: url(), url(livraria.jpg);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 36px 32px;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+
+  }
