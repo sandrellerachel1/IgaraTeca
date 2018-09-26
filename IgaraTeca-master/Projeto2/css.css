@@ -1,0 +1,156 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Arial Rounded MT;
+	
+}
+body{
+	background-color: white;
+	background-image: url(), url();
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+}
+h1{
+	margin: auto;
+	padding-top: 20px;
+	text-align: center;
+
+}
+
+
+#menu ul li a{
+	padding: 40px ;
+	margin: auto;
+	display: inline-block;
+	color: orange;
+	text-decoration: none;
+
+}
+#menu ul li a:hover{
+	text-decoration: underline;
+}
+
+#mot{
+	width: 450px;
+	height: 500px;
+	margin: auto;
+	padding-top: 40px; 
+}
+#desen{
+	text-align: center;
+	height: 300px;
+	width: 330px;
+	padding-top: 40px;
+	margin: auto;
+}
+.vol{
+	width: 50px;
+	height: 40px;
+	border: 2px groove;
+	border-radius: 3px;
+	
+}
+a{
+	text-decoration: none;
+	color: #8A0808;
+	text-align: center;
+	cursor: pointer;
+}
+#view{
+	margin: auto;
+	padding-top: 40px;
+	width: 50%;
+}
+p a{
+	color: black;
+	border-color: black;
+	background-color: white;
+	font-size: 18px;
+	padding:1px 3px;
+}
+#livro{
+	margin: auto;
+	padding-top: 30px;
+	height: auto;
+}
+input, textarea, select {
+    display: block;
+    width: 50%;
+    box-sizing: border-box;
+    border: none;
+    padding: 5px;
+    font-size: 1.2em;
+    margin: 3px;
+    border-radius: 10px;
+}
+table tr td{
+	padding: 10px;
+}
+table tr th{
+	text-align: left;
+}
+#sobre{
+	height: 300px;
+	width: 300px;
+	margin: auto;
+	padding-top: 40px;
+	text-align: center;
+}
+#livro table tr td{
+	border:solid 1px;
+
+}
+#destaque{
+	margin: 20px 990px;
+	padding: 10px;
+	border:groove 2px #8A0808;
+	border-radius: 7px;
+	width: 130px;
+	height: 300px;
+	padding-top: 5px;
+}
+#dest{
+	text-align: right;
+    margin-top: 80px;
+    padding-right: 175px;
+    color: #8A0808;
+}
+#destaque a:hover{
+	text-decoration: underline;
+}
+#lista{
+    float: left;
+
+}
+ul {
+   list-style-type: none;
+   margin: 0;
+   overflow: hidden;
+   background-color:;
+   padding: 36px 32px;
+}
+#home {
+	background-color:;
+    background-image: url(), url(livraria.jpg);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 36px 32px;
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+
+  }
+  .copyright {
+	color: orange;
+	height: 90px;
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 0;
+	width: 100%;
+}
+.copyright p {
+	text-align: center;
+}
