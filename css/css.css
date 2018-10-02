@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Fjalla One', sans-serif;
+}
+body{
+	background-image: url('../img/livraria.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 13px 0px;
+	position: absolute;
+	width: 100%;
+	height: 800px;
+	margin: auto;
+}
+.h1{
+	margin: auto;
+	padding-top: 0px;
+	text-align: left;
+	font-size:60px;
+	padding-left: 20px;
+
+}
+.h2{
+	color: white;
+	font-size: 60px;
+	background-color: blue;
+	border-radius: 5px;
+	border:groove 1.7px blue;
+	padding: 1px 5px;
+}
+.mot{
+	width: 55%;
+	height: 40%;
+	margin: auto;
+	padding-top: 8px; 
+}
+.desen{
+	text-align: center;
+	height: 300px;
+	width: 330px;
+	padding-top: 40px;
+	margin: auto;
+}
+.vol{
+	width: 50px;
+	height: 40px;
+	border: 2px groove;
+	border-radius: 5px;	
+}
+a{
+	text-decoration: none;
+	color: blue;
+	text-align: center;
+	cursor: pointer;
+}
+.menu{
+	border-radius: 5px;
+	padding: 10px;
+	background-color: white;
+	opacity:0.90;
+	color: black;
+}
+.menu:hover{
+	color: white;
+	background-color: black;
+}
+.view{
+	margin: auto;
+	padding-top: 15px;
+	width: 50%;
+	height: 50%;
+}
+p a{
+	color: black;
+	border-color: black;
+	background-color: white;
+	font-size: 18px;
+	padding:1px 3px;
+}
+.livro{
+	margin: auto;
+	padding-top: 0px;
+	
+}
+.livro table tr td{
+	border:solid 1px;
+	border-radius: 5px;
+	padding: 10px;
+
+}
+table tr th{
+	text-align: left;
+}
+.cadlivro{
+    width: 400px;
+    height: 550px;
+    background: #D8D8D8;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+.cadlivro input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.cadlivro p{
+	text-align: left;
+}
+.cadlivro h1{
+    
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+    margin-top: -35px;
+}
+.cadlivro input[type="text"]{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+}
+.cadlivro input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0080FF;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.cadlivro select{
+	width: 100%;
+	height: 27px;
+}
+.cadlivro textarea{
+	width: 335px;
+	border-radius: 4px;
+}
+.sobre{
+	height: 300px;
+	width: 300px;
+	margin: auto;
+	padding-top: 40px;
+	text-align: center;
+}
+ul {
+   list-style-type: none;
+   margin: 0;
+   overflow: hidden;
+   padding: 36px 32px;
+}
+.home {
+    padding-top: 1px;
+    list-style-type: none;
+    margin: -50px auto;
+    overflow: hidden;
+    padding-left: 1px;
+
+ }
+.home ul a{
+	padding: 10px;
+	margin: auto;
+}
+.destaque{
+	margin-top: 60px;
+}
+.slide{
+	width: 300px;
+	height: 350px;
+	margin: 90px auto;
+	overflow: hidden;
+	border-radius: 4px;
+	margin-top: 40px;
+}
+.slide ul{
+	margin: auto; 
+	padding: 0;
+}
+div.slide section.botao{
+	display: none;
+	margin: 5px;
+	position: absolute;
+	z-index: 500;
+	opacity: 0.7;
+}
+div.slide section.botao a{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	text-align: center;
+	line-height: 50px;
+	text-decoration: none;
+	background-color: #333;
+	color: white;
+	margin: 5px;
+}
+div.slide section.botao a:hover{
+	background-color: #555;
+
+}
+.copyright {
+	color: white;
+	height: 24px;
+	background-color: black;
+	position: fixed;
+	bottom: 0;
+	margin-bottom: 0;
+	width: 100%;
+	opacity: 0.80;
+	padding-top: 5px;
+	z-index: 500;
+
+}
+.copyright p {
+	text-align: center;
+}
+img{
+	border-radius: 4px;
+}
+#logotipo{
+	width: 160px;
+	height: 95px;
+	opacity: 0.9;
+	border-radius: 20px;
+	margin-top: 1px;
+	margin-left: 20px;
+	border: groove 1px #E6E6E6;
+}
+.login{
+    width: 320px;
+    height: 360px;
+    background: #D8D8D8;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 6px;
+    margin-top: 30px;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+.login h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.login p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: left;
+}
+.login input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+}
+.login input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0080FF;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.registro{
+    width: 320px;
+    height: 490px; /*410px; */
+    background: #D8D8D8;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 6px;
+    margin-top: 80px;
+}
+.registro p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: left;
+}
+.registro input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.registro input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+}
+.registro input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0080FF;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
