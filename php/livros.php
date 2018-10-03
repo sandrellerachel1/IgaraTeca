@@ -21,7 +21,7 @@ session_start();
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
+				echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
@@ -33,27 +33,26 @@ session_start();
 
 	</div><br>
 	<div class="livro"><center>
+			    <?php
+			        include('conexao.php');
+
+					  	$pega="SELECT * FROM livro";
+					  	$consulta=$pdo->query($pega) or die($pdo->error);
+					  	while ($teste=fetchAll($consulta)){
+					  	echo $teste['LIVRO_NOME'];
+				}
+				?>
 	<table>
 	    
 	        <tr>
-		       	<th>Nome</th>
-		       	<th>Tipo do Livro</th>
-		    </tr>
-			    <?php
-			        $filename='livro.csv';
-				        $file=file($filename);
+		       	<th>Identificação do livro</th>
+		       	<th>Nome do livro</th>
+		       	<th>Tipo do livro</th>
 
-					    foreach($file as $key => $value){
-					    $linha=explode(";;;", $file[$key]);
-				    		echo '<tr>';
-					    	echo '<td>'.$linha[0].'</td>';
-					    	echo '<td>'.$linha[1].'</td>';
-					    	
-			        		echo '<td><a href=view.php?id='.$key.'>Resumo</a></td>';
-			        		echo '<td><a href=delete.php?id='.$key.'>Remover</a></td>';
-				      		echo '</tr>';
-					    };
-				?>
+		    </tr>
+				    
+				    
+				
 	        
 	    </table><br>
 	    <p><a href="cadLivros.php" class="vol">Voltar</a></strong></p>

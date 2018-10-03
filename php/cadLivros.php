@@ -22,7 +22,7 @@ session_start();
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
+				echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
@@ -39,18 +39,20 @@ session_start();
 		<?php
 		if(isset($_SESSION['usuario'])=='Teste'){
 	    echo '<div class="cadlivro">
-		<form method="POST" action="">
+		<form method="POST" action="addlivro.php">
 			<h1>Cadastro de livros</h1>
 			<p>Nome do livro:</p>
-			<input type="text" name="" placeholder="Nome do livro" required=""><br>
+			<input type="text" name="livro" placeholder="Nome do livro" required=""><br>
 			<p>Tipo do livro:</p><br>
-			<select required="">
+			<select name="tipo" required="">
 				<option value="" disabled="">Tipo do Livro</option>
 				<option value="acao">Ação</option>
 				<option value="romance">Romance</option>
 				<option value="infantil">Infantil</option>
 				<option value="didatico">Didático</option>
 			</select><br><br>
+			<p>Identificação do livro:</p>
+			<input type="text" name="codigo" placeholder="Identificação do livro" required=""><br>
 			<p>Resumo do livro:</p><br>
 			<textarea name="resumo" cols="39" rows="10" placeholder="Resumo"></textarea><br><br>
 			<input type="submit" value="Cadastrar">

@@ -66,6 +66,9 @@ a{
 	color: white;
 	background-color: black;
 }
+#red{
+	color: blue;
+}
 .view{
 	margin: auto;
 	padding-top: 15px;
@@ -95,7 +98,7 @@ table tr th{
 }
 .cadlivro{
     width: 400px;
-    height: 550px;
+    height: 610px;
     background: #D8D8D8;
     color: black;
     top: 50%;
@@ -105,7 +108,7 @@ table tr th{
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 6px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 .cadlivro input{
     width: 100%;

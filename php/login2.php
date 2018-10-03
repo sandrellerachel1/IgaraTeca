@@ -1,16 +1,6 @@
 <?php 
 session_start();
-$host= "mysql:dbname=id7242212_igarateca;host=localhost";
-$usuariobd="id7242212_admin";
-$senhabd="647298";
-
-	try{
-		$pdo=new PDO($host, $usuariobd, $senhabd);
-	}
-
-	catch(PDOExecption $e){
-		echo "Falha: ". $e->getMessage();
-	}
+include('conexao.php');
 
 	$usuario= addslashes($_POST['usuario']);
 	$senha=md5(addslashes($_POST['senha']));

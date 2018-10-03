@@ -1,16 +1,5 @@
 <?php 
-//include('conexao.php');
-$host= "mysql:dbname=id7242212_igarateca;host=localhost";
-$usuariobd="id7242212_admin";
-$senhabd="647298";
-
-	try{
-		$pdo=new PDO($host, $usuariobd, $senhabd);
-	}
-
-	catch(PDOExecption $e){
-		echo "Falha: ". $e->getMessage();
-	}
+include('conexao.php');
 
 	if(empty($_POST['usuario']) || empty($_POST['senha']) || empty($_POST['email'])){
 		header('location: registro.php');

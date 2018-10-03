@@ -21,7 +21,7 @@ session_start();
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
+				echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;

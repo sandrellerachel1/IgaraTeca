@@ -6,7 +6,8 @@ session_start();
 <head>
 	<meta charset="utf-8">
 	<title>IgaraTeca</title>
-	<link rel="stylesheet" type="text/css" href="css/css.css">
+	
+	<link rel="stylesheet" type="text/css" @media="screen and (max-width: 400px)" href="css/pequeno.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
@@ -41,7 +42,7 @@ session_start();
 				<a type="button" class="menu" href="php/desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="php/logout.php">Sair</a>';
+				echo '<a type="button" class="menu" id="red" href="php/logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="php/registro.php">Registrar-se</a>', PHP_EOL;
