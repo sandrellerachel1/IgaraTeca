@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_SESSION['usuario'])){
+	header('location: ../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +18,7 @@ session_start();
 		<center><ul>
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="cadLivros.php">Livros</a>
+				<a type="button" class="menu" href="livros.php">Livros</a>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
@@ -39,6 +42,16 @@ session_start();
 			<form method="POST" action="login2.php">
 				<img src="../img/avatar1.png" class="avatar">
 	        	<h1>Login</h1>
+	        	<?php if (isset($_SESSION['sucesso'])) {?>
+	        		<span style="color: blue; font-size: 15px;">Usuário cadastrado com sucesso! Vá até seu e-mail para validar seu usuário.</span>
+					<?php unset($_SESSION['sucesso']); ?>
+				<?php } elseif (isset($_SESSION['naoexiste'])) { ?>
+					<span style="color: red;">Usuário não existe!</span>
+					<?php unset($_SESSION['naoexiste']);?>
+				<?php } elseif (isset($_SESSION['incorreta'])) { ?>
+					<span style="color: red;">Senha incorreta!</span>
+					<?php unset($_SESSION['incorreta']); ?>
+				<?php } ?>
 	            <p>Usuário:</p>
 	            <input type="text" name="usuario" placeholder="Usuário" required="">
 	            <p>Senha:</p>

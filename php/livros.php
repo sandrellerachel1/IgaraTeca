@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('conexao.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,13 +16,17 @@ session_start();
 		<center><ul>
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="cadLivros.php">Livros</a>
+				<a type="button" class="menu" href="livros.php">Livros</a>
+				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
+					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+				} ?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
+					echo '<a type="button" class="menu" href="conta.php">Conta</a>', PHP_EOL;
+					echo '<a type="button" class="menu" href="logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
@@ -33,29 +38,55 @@ session_start();
 
 	</div><br>
 	<div class="livro"><center>
-			    <?php
-			        include('conexao.php');
-
-					  	$pega="SELECT * FROM livro";
-					  	$consulta=$pdo->query($pega) or die($pdo->error);
-					  	while ($teste=fetchAll($consulta)){
-					  	echo $teste['LIVRO_NOME'];
-				}
-				?>
+	
+	<?php
+		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>		   
 	<table>
 	    
 	        <tr>
-		       	<th>Identificação do livro</th>
+		       	<th>ISBN</th>
 		       	<th>Nome do livro</th>
 		       	<th>Tipo do livro</th>
+		       	<th></th>
 
 		    </tr>
-				    
-				    
-				
-	        
-	    </table><br>
-	    <p><a href="cadLivros.php" class="vol">Voltar</a></strong></p>
+				<?php   
+					$stmt = $pdo->prepare("SELECT * FROM livro");
+					$stmt ->execute();
+					$resultado = $stmt->fetchAll();	?>
+					<?php foreach ($resultado as $value) : ?>
+			<tr>
+				<td><?= $value['LIVRO_CODIGO']; ?></td>
+				<td><?= $value['LIVRO_NOME']; ?></td>
+				<td><?= $value['LIVRO_TIPO']; ?></td>
+				<td><a href=view.php?i=<?= $value['LIVRO_CODIGO']?>>Resumo</td>
+				<td><a href=delete.php?i=<?= $value['LIVRO_CODIGO']?>>Excluir</td>
+			</tr>
+			<?php endforeach ?>
+			<?php } else {?>
+				<table>
+	    
+			        <tr>
+				       	<th>Nome do livro</th>
+				       	<th>Tipo do livro</th>
+				       	
+
+				    </tr>
+						<?php   
+							$stmt = $pdo->prepare("SELECT * FROM livro");
+							$stmt ->execute();
+							$resultado = $stmt->fetchAll();	?>
+							<?php foreach ($resultado as $value) : ?>
+					<tr>
+						<td><?= $value['LIVRO_NOME']; ?></td>
+						<td><?= $value['LIVRO_TIPO']; ?></td>
+						<td><a href=view.php?i=<?= $value['LIVRO_CODIGO']?> >Resumo</td>
+						<td><a href=pedido.php?i=<?= $value['LIVRO_CODIGO']?> >Soliticar livro</a></td>
+					</tr>
+						<?php endforeach ?>
+			<?php } ?>
+			        
+			    </table><br>
 	</center></div>
 
 	<div class="copyright">

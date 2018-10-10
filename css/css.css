@@ -66,9 +66,6 @@ a{
 	color: white;
 	background-color: black;
 }
-#red{
-	color: blue;
-}
 .view{
 	margin: auto;
 	padding-top: 15px;
@@ -87,15 +84,17 @@ p a{
 	padding-top: 0px;
 	
 }
+.livro table tr th{
+    padding: 10px;
+    text-align: center;
+}
 .livro table tr td{
 	border:solid 1px;
 	border-radius: 5px;
 	padding: 10px;
 
 }
-table tr th{
-	text-align: left;
-}
+
 .cadlivro{
     width: 400px;
     height: 610px;
@@ -170,6 +169,7 @@ ul {
     margin: -50px auto;
     overflow: hidden;
     padding-left: 1px;
+    width: 70%;
 
  }
 .home ul a{
@@ -242,8 +242,8 @@ img{
 	border: groove 1px #E6E6E6;
 }
 .login{
-    width: 320px;
-    height: 360px;
+    width: 360px;
+    height: 410px;
     background: #D8D8D8;
     color: black;
     top: 50%;
@@ -253,7 +253,7 @@ img{
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 6px;
-    margin-top: 30px;
+    margin-top: 17px;
 }
 .avatar{
     width: 100px;
@@ -270,10 +270,11 @@ img{
     font-size: 22px;
 }
 .login p{
-    margin: 0;
+    margin-top: 20px;
     padding: 0;
     font-weight: bold;
     text-align: left;
+
 }
 .login input{
     width: 100%;
@@ -299,8 +300,8 @@ img{
     cursor: pointer;
 }
 .registro{
-    width: 320px;
-    height: 490px; /*410px; */
+    width: 370px;
+    height: 520px; /*410px; */
     background: #D8D8D8;
     color: black;
     top: 50%;
@@ -310,7 +311,7 @@ img{
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 6px;
-    margin-top: 80px;
+    margin-top: 70px;
 }
 .registro p{
     margin: 0;

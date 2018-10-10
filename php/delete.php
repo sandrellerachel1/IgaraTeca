@@ -1,10 +1,7 @@
 <?php
-	$filename='livro.csv';
-	$file=file($filename);
-	//$linha= fopen($file, "a");
-	$remover=$_GET['id'];
-	unset($file[$remover]);
-	$data=implode('', $file);
-	file_put_contents($filename, $data);
+include('conexao.php');
+$i=$_GET['i'];
+$stmt=$pdo->prepare("DELETE FROM livro WHERE LIVRO_CODIGO='$i'");
+$stmt->execute();
 header('location: livros.php');
 ?>

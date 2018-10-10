@@ -38,12 +38,22 @@ include('conexao.php');
 		<center>
 			<p><?php 
 				$i=$_GET['i'];
+				$stmt = $pdo->prepare("SELECT * FROM Usuario");
+				$stmt ->execute();
+				$resultado = $stmt->fetchAll();	
+				
+				foreach ($resultado as $value) {
+					if(md5($value['USER_ID'])==$i && $value['USER_STATUS']=='1'){
+						echo "Erro! Usuário já foi validado.";
+						exit();
+					}
+				}
 				if(!empty($i)){
 					$pdo->query("UPDATE Usuario SET USER_STATUS='1' WHERE MD5(USER_ID) = '$i'");
 					echo "Cadastro confirmado com sucesso!";
 				}
-
-			?> </p>
+				?> 
+			</p>
 		</center></div>
 
 	<div class="copyright">

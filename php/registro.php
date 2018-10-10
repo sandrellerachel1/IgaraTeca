@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_SESSION['usuario'])){
+	header('location: ../index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +18,7 @@ session_start();
 		<center><ul>
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="cadLivros.php">Livros</a>
+				<a type="button" class="menu" href="livros.php">Livros</a>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
@@ -38,7 +41,17 @@ session_start();
 		<center>
 			<form method="POST" action="registro2.php">
 				<img src="../img/avatar1.png" class="avatar">
-				<h1>Registro</h1>
+				<h1>Registro</h1><br>
+				<?php if(isset($_SESSION['user'])){ ?>
+					<span style="color: red;">Usuário já existe!</span>
+					<?php unset($_SESSION['user']); ?>
+					<?php } elseif(isset($_SESSION['email'])) {?>
+					<span style="color: red;">E-mail já foi utilizado!</span>
+					<?php unset($_SESSION['email']); ?>
+					<?php } elseif(isset($_SESSION['senhas'])) {?>
+					<span style="color: red;">Senhas diferentes!</span>
+					<?php unset($_SESSION['senhas']); ?>
+				<?php } ?>
 				<p>Usuário:</p>
 				<input type="text" name="usuario" placeholder=" Usuário" required="">
 				<p>Senha:<input type="password" name="senha" placeholder=" Senha" required="">

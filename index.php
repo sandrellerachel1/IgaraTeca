@@ -7,7 +7,7 @@ session_start();
 	<meta charset="utf-8">
 	<title>IgaraTeca</title>
 	
-	<link rel="stylesheet" type="text/css" @media="screen and (max-width: 400px)" href="css/pequeno.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
@@ -36,13 +36,17 @@ session_start();
 			<strong>
 
 				<a type="button" class="menu" href="index.php">Início</a>
-				<a type="button" class="menu" href="php/cadLivros.php">Livros</a>
+				<a type="button" class="menu" href="php/livros.php">Livros</a>
+				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
+					echo '<a type="button" class="menu" href="php/cadLivros.php">Cadastro de livros</a>';
+				} ?>
 				<a type="button" class="menu" href="php/funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="php/sobre.php">Sobre</a>
 				<a type="button" class="menu" href="php/desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" id="red" href="php/logout.php">Sair</a>';
+					echo '<a type="button" class="menu" href="php/conta.php">Conta</a>', PHP_EOL;
+					echo '<a type="button" class="menu" id="red" href="php/logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="php/registro.php">Registrar-se</a>', PHP_EOL;
@@ -63,9 +67,9 @@ session_start();
 				<a herf="#" class="proxima" style="font-size: 40px;">&raquo;</a>
 			</section>
 			<ul>
-				<li><img src="img/hitman.jpg" width="300" height="350" position="center"></li>
-				<li><img src="img/gramatica.jpg" width="300" height="350" position="center"></li>
-				<li><img src="img/ocortico.jpg" width="300" height="350" position="center"></li>
+				<a href="php/view.php?i=hitman"><li><img src="img/hitman.jpg" width="300" height="350" position="center"></li></a>
+				<a href="php/view.php?i=gramatica"><li><img src="img/gramatica.jpg" width="300" height="350" position="center"></li></a>
+				<a href="php/view.php?i=cortiço"><li><img src="img/ocortico.jpg" width="300" height="350" position="center"></li></a>
 			</ul>
 		</div>
 	</center>

@@ -15,13 +15,17 @@ session_start();
 		<center><ul>
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="cadLivros.php">Livros</a>
+				<a type="button" class="menu" href="livros.php">Livros</a>
+				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
+					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+				} ?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
+					echo '<a type="button" class="menu" href="conta.php">Conta</a>', PHP_EOL;
+					echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
