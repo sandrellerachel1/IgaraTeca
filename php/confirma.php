@@ -1,6 +1,11 @@
 <?php
 session_start();
 include('conexao.php');
+if (isset($_SESSION['usuario'])) {
+	echo "Erro! Você está logado com outro usuário. Faça o logout e tente novamente.";
+	header('location: ../index.php');
+	exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -9,6 +14,7 @@ include('conexao.php');
 	<title>Registrar-se</title>
 	<link rel="stylesheet" type="text/css" href="../css/css.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="shortcut icon" type="image/x-png" href="../img/logo.png">
 </head>
 <body>
 	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>

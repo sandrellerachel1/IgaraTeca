@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['usuario'])){
 	header('location: ../index.php');
+	exit();
 }
 ?>
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ if(isset($_SESSION['usuario'])){
 	<title>Registrar-se</title>
 	<link rel="stylesheet" type="text/css" href="../css/css.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
 </head>
 <body>
 	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
@@ -21,10 +23,9 @@ if(isset($_SESSION['usuario'])){
 				<a type="button" class="menu" href="livros.php">Livros</a>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" id="red" href="logout.php">Sair</a>';
+				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
@@ -39,6 +40,10 @@ if(isset($_SESSION['usuario'])){
 
 	<div class="registro">
 		<center>
+			<script type="text/javascript">
+				alert("Atenção! Ao cadastrar-se verifique se seu e-mail está correto, pois só será possível fazer login com seu usuário depois que o cadastro for confirmado no e-mail.");
+			</script>
+			
 			<form method="POST" action="registro2.php">
 				<img src="../img/avatar1.png" class="avatar">
 				<h1>Registro</h1><br>
@@ -51,8 +56,11 @@ if(isset($_SESSION['usuario'])){
 					<?php } elseif(isset($_SESSION['senhas'])) {?>
 					<span style="color: red;">Senhas diferentes!</span>
 					<?php unset($_SESSION['senhas']); ?>
+				<?php } elseif(isset($_SESSION['emailinvalido'])) {?>
+					<span style="color: red;">E-mail inválido!</span>
+					<?php unset($_SESSION['emailinvalido']); ?>
 				<?php } ?>
-				<p>Usuário:</p>
+				<p>Usuário: </p>
 				<input type="text" name="usuario" placeholder=" Usuário" required="">
 				<p>Senha:<input type="password" name="senha" placeholder=" Senha" required="">
 				<p>Confirmar senha:</p>

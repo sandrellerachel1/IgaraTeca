@@ -13,6 +13,7 @@ if(!isset($_SESSION['usuario'])){
     <title>Login</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
 </head>
 <body>
 	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
@@ -23,11 +24,10 @@ if(!isset($_SESSION['usuario'])){
 				<a type="button" class="menu" href="livros.php">Livros</a>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				
 				<?php
 				if(isset($_SESSION['usuario'])){
-					echo '<a type="button" class="menu" href="conta.php">Conta</a>', PHP_EOL;
+					echo '<a type="button" class="menu" id="usu" href="conta.php">'.$_SESSION['usuario'].'</a>', PHP_EOL;
 					echo '<a type="button" class="menu" href="logout.php">Sair</a>';
 				}
 				else{
@@ -40,20 +40,21 @@ if(!isset($_SESSION['usuario'])){
 
 	</div><br>
 
-	<div class="login">
+	<div class="recupera">
 		<center>
 			<h1>Conta</h1>
 			<?php
 				$usuario=$_SESSION['usuario'];
-				$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_NOME='$usuario' ");
-				$stmt ->execute();
+				$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_NOME=? ");
+				$stmt ->execute([$usuario]);
 				$resultado=$stmt->fetchAll();
 
 				foreach ($resultado as $value) { ?>
 				<p><?= "Login: ".$value['USER_NOME']; ?></p><br>
+				<p><?= "Matrícula: ".$value['USER_MATRICULA']; ?></p><br>
 				<p><?= "E-mail: ".$value['USER_EMAIL']; ?></p><br>
 				<p><?= "Senha: "."*****" ?></p><br>
-				<a href="#">Alterar senha</a><br>
+				<a href="recupera.php">Alterar senha</a><br>
 				
 			<?php } ?>
 
