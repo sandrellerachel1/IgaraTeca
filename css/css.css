@@ -105,6 +105,14 @@ a{
 	width: 50%;
 	height: 50%;
 }
+.view p{
+    font-size: 20px;
+    padding: 10px;
+}
+.view img{
+    width: 300px;
+    height: 350px;
+}
 p a{
 	color: black;
 	border-color: black;

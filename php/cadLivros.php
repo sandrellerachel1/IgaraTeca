@@ -45,7 +45,7 @@ include('conexao.php');
 		//Verifica se o usuário pode ter acesso ao cadastro de livros
 		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
 	    <div class="cadlivro">
-		<form method="POST" action="addlivro.php">
+		<form method="POST" action="addlivro.php" enctype="multipart/form-data">
 			<h1>Cadastro de livros</h1>
 			<p>Nome do livro:</p>
 			<input type="text" name="livro" placeholder="Nome do livro" required=""><br>
@@ -57,7 +57,7 @@ include('conexao.php');
 				<option value="infantil">Infantil</option>
 				<option value="didatico">Didático</option>
 			</select>
-			<p class="file">Selecionar imagem: <input type="file" name=""></p>
+			<p class="file">Selecionar imagem: <input type="file" name="arquivo"></p>
 			<p>ISBN do livro:</p>
 			<input type="text" name="codigo" placeholder="ISBN do livro" required=""><br>
 			<p>Resumo do livro:</p><br>

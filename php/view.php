@@ -48,9 +48,20 @@ include('conexao.php');
 			
 			<?php foreach ($resultado as $value) { ?>
 			<h1><?= $value['LIVRO_NOME'];?></h1>
-			<p><strong>Tipo: <?=$value['LIVRO_TIPO'];?> </strong></p><br>
-			<p><strong>Resumo: <?=$value['LIVRO_RESUMO'];?></strong></p>
-			<?php } ?>
+			<p>Tipo: <?=$value['LIVRO_TIPO'];?> </p>
+			<p>Resumo: <?=$value['LIVRO_RESUMO'];?> </p>
+			<?php 
+			$pega=$value['LIVRO_NOME'];
+			$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=? ");
+			$stmt->execute([$value['LIVRO_IMAGEM']]);
+			$resultado=$stmt->fetchAll();
+			foreach ($resultado as $value) {
+				$local="../img/livros/";
+				$imagem=$local.$value['IMG_NOME'];
+			?>
+			<img src="<?= $imagem; ?>">
+		
+			<?php } }?>
 		<br>
 		<p><a href="livros.php" class="vol">Voltar</a></strong></p>
 	</center></div>
