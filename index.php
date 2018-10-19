@@ -9,6 +9,7 @@ session_start();
 	
 	<link rel="stylesheet" type="text/css" href="css/css.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="shortcut icon" type="image/x-png" href="img/logo2.png">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
 	<script type="text/javascript">
@@ -42,11 +43,10 @@ session_start();
 				} ?>
 				<a type="button" class="menu" href="php/funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="php/sobre.php">Sobre</a>
-				<a type="button" class="menu" href="php/desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-					echo '<a type="button" class="menu" href="php/conta.php">Conta</a>', PHP_EOL;
-					echo '<a type="button" class="menu" id="red" href="php/logout.php">Sair</a>';
+					echo '<a type="button" class="menu" id="usu" href="php/conta.php">'.$_SESSION['usuario'].'</a>', PHP_EOL;
+					echo '<a type="button" class="menu" href="php/logout.php">Sair</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="php/registro.php">Registrar-se</a>', PHP_EOL;
@@ -59,7 +59,8 @@ session_start();
 	
 	</div><br>
 
-	<center>
+
+	<center >
 		<p class="destaque">Livros em destaque</p>
 		<div class="slide">
 			<section class="botao">
@@ -72,7 +73,20 @@ session_start();
 				<a href="php/view.php?i=cortiço"><li><img src="img/ocortico.jpg" width="300" height="350" position="center"></li></a>
 			</ul>
 		</div>
+
 	</center>
+		
+		<div class="desen">
+		<p><strong>Desenvolvedores:</strong></p><br>
+		<p>Ricardo Maranhão</p>
+		<p> Rivaldo Valle</p> 
+		<p>Jackson da Silva</p> 
+		<p>Sandrelle Rachel</p>
+		<p>Alessandro José</p>
+		<p>José Augusto</p> 
+		<p>Raquel Gabriell</p><br>
+		
+		</div>
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

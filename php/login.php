@@ -11,6 +11,7 @@ if(isset($_SESSION['usuario'])){
     <title>Login</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
 </head>
 <body>
 	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
@@ -21,7 +22,6 @@ if(isset($_SESSION['usuario'])){
 				<a type="button" class="menu" href="livros.php">Livros</a>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<a type="button" class="menu" href="registro.php">Registrar-se</a>
 				<?php
 				if(isset($_SESSION['usuario'])){

@@ -36,11 +36,14 @@ include('conexao.php');
 		}
 	}
 
-	
+
+// Faz a verificação usando a função
+if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$_SESSION['sucesso']=1;
 
-	$pdo->query("INSERT INTO Usuario SET USER_NOME='$usuario', USER_SENHA='$senha', USER_EMAIL='$email'");
-
+	$pdo->prepare("INSERT INTO Usuario SET USER_NOME= ? USER_SENHA= ? USER_EMAIL= ? ");
+	$pdo->execute([$usuario, $senha, $email]);
+	
 	//Envio de e-mail para confirmar o usuário 
 	$assunto="Confirme seu cadastro";
 	$id=$pdo->lastInsertId();
@@ -49,7 +52,15 @@ include('conexao.php');
 	$mensagem=" Clique aqui para confirmar seu cadastro  ".$link;
 	$head="From: IGARATECA";
 	mail($email, $assunto, $mensagem, $head);
-	
 	header('location: login.php');
+	exit();
+} 
+else {
+	$_SESSION['emailinvalido']=1;
+	header('location: registro.php');
+	exit();
+}
+
+	
 
  ?>

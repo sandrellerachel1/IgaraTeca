@@ -13,6 +13,8 @@ if(!isset($_SESSION['usuario'])){
     <title>Cadastro de Livros</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
+     
 </head>
 <body>
 	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
@@ -26,10 +28,9 @@ if(!isset($_SESSION['usuario'])){
 				} ?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-					echo '<a type="button" class="menu" href="conta.php">Conta</a>', PHP_EOL;
+					echo '<a type="button" class="menu" id="usu" href="conta.php">'.$_SESSION['usuario'].'</a>', PHP_EOL;
 					echo '<a type="button" class="menu" href="logout.php">Sair</a>';
 				}
 				else{
@@ -46,13 +47,15 @@ if(!isset($_SESSION['usuario'])){
 		<center>
 		<?php if (isset($_SESSION['pedido'])) {?>
 			<span style="color: blue;">Pedido realizado com Sucesso!</span>
-			<?php unset($_SESSION['pedido']); ?>
-		<?php } ?>
+			
+		<?php } elseif(isset($_SESSION['existepedido'])){?>
+			<span style="color: red;">Você já realizou uma solicitação! Não será possível realizar outra.</span>
+			<?php unset($_SESSION['existepedido']); }?>
 		<?php
 			if(isset($_GET['i'])){
 			$i=$_GET['i'];
-			$stmt = $pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO='$i' ");
-			$stmt ->execute();
+			$stmt = $pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO= ? ");
+			$stmt ->execute([$i]);
 			$resultado = $stmt->fetchAll();	?>
 			
 			<?php foreach ($resultado as $value) { ?> 
@@ -64,11 +67,10 @@ if(!isset($_SESSION['usuario'])){
 			
 
 
-			<?php } }?>
+			<?php $_SESSION['livro']=$value['LIVRO_CODIGO']; } }?>
 		</center>
 	</div>
-
-
+	
 	<div class="copyright">
 	<p>©Copyright 2018</p>
 	</div>

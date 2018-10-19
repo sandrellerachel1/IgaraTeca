@@ -12,7 +12,7 @@ body{
 	position: absolute;
 	width: 100%;
 	height: 800px;
-	margin: auto;
+	
 }
 .h1{
 	margin: auto;
@@ -21,6 +21,14 @@ body{
 	font-size:60px;
 	padding-left: 20px;
 
+}
+#usu{
+    color: white;
+    background-color: black;
+}
+#usu:hover{
+    color: #1C1C1C;
+    background-color: #BDBDBD;
 }
 .h2{
 	color: white;
@@ -38,16 +46,41 @@ body{
 }
 .desen{
 	text-align: center;
-	height: 300px;
-	width: 330px;
-	padding-top: 40px;
-	margin: auto;
+	width: 170px;
+	padding-top: 20px;
+	margin-left: 25px;
+    margin-top: -433px;
+    border: 1px groove #E6E6E6;
+    border-radius: 4px;
+    border-left: 1.5px groove #E6E6E6;
 }
 .vol{
 	width: 50px;
 	height: 40px;
-	border: 2px groove;
-	border-radius: 5px;	
+	padding: 5px;
+	border-radius: 5px;
+    color: white;
+    background-color: blue;
+}
+.livro .busca{
+    border-radius: 4px; 
+    height: 30px;
+    width: 17%;
+}
+.livro .submit{
+    height: 32px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    text-align: center; 
+    color: white; 
+    background-color: blue; 
+    border:none; border-radius: 4px; 
+    cursor: pointer;
+    font-size: 17px;
+}
+.pesquisa{
+    color: black;
+    font-size: 20px;
 }
 a{
 	text-decoration: none;
@@ -82,21 +115,31 @@ p a{
 .livro{
 	margin: auto;
 	padding-top: 0px;
+
 	
 }
-.livro table tr th{
-    padding: 10px;
+.livro table{
+    margin-top: 60px;
+    width: 80%;
     text-align: center;
+    border: 1px groove #E6E6E6;
+    
+}
+.livro table tr th{ 
+    padding: 10px;
+    }
+.livro table tr {
+    border-bottom: 2px solid blue;
+    border: solid;
 }
 .livro table tr td{
-	border:solid 1px;
-	border-radius: 5px;
 	padding: 10px;
+    border: groove 1px #E6E6E6;
 
 }
 
 .cadlivro{
-    width: 400px;
+    width: 40%;
     height: 610px;
     background: #D8D8D8;
     color: black;
@@ -112,6 +155,12 @@ p a{
 .cadlivro input{
     width: 100%;
     margin-bottom: 20px;
+}
+.cadlivro .file{
+    text-align: right;
+    margin-right: -245px;
+    width: 85px;
+    margin-top: -63px;
 }
 .cadlivro p{
 	text-align: left;
@@ -143,11 +192,12 @@ p a{
     cursor: pointer;
 }
 .cadlivro select{
-	width: 100%;
+	width: 60%;
+    margin-left: -185px;
 	height: 27px;
 }
 .cadlivro textarea{
-	width: 335px;
+	width: 100%;
 	border-radius: 4px;
 }
 .sobre{
@@ -272,7 +322,6 @@ img{
 .login p{
     margin-top: 20px;
     padding: 0;
-    font-weight: bold;
     text-align: left;
 
 }
@@ -299,6 +348,7 @@ img{
     border-radius: 20px;
     cursor: pointer;
 }
+
 .registro{
     width: 370px;
     height: 520px; /*410px; */
@@ -316,9 +366,9 @@ img{
 .registro p{
     margin: 0;
     padding: 0;
-    font-weight: bold;
     text-align: left;
 }
+
 .registro input{
     width: 100%;
     margin-bottom: 20px;
@@ -333,6 +383,56 @@ img{
     font-size: 16px;
 }
 .registro input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0080FF;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.recupera {
+    width: 360px;
+    height: 435px;
+    background: #D8D8D8;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 6px;
+    margin-top: 17px;
+}
+.recupera h1{
+    margin: 0;
+    padding: 0 0 30px;
+    text-align: center;
+    font-size: 22px;
+    margin-top: -30px;
+}
+.recupera p{
+    margin-top: 5px;
+    padding: 0;
+    text-align: left;
+
+}
+.recupera input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.recupera input[type="text"], input[type="password"]{
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: black;
+    font-size: 16px;
+}
+.recupera input[type="submit"]{
     border: none;
     outline: none;
     height: 40px;
