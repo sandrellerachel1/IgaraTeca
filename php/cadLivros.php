@@ -40,11 +40,11 @@ include('conexao.php');
 
 	</div><br>
 	
-	<div class="livro"><center>
+	<div class="cadlivro"><center>
 		<?php
 		//Verifica se o usuário pode ter acesso ao cadastro de livros
 		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
-	    <div class="cadlivro">
+	    
 		<form method="POST" action="addlivro.php" enctype="multipart/form-data">
 			<h1>Cadastro de livros</h1>
 			<p>Nome do livro:</p>

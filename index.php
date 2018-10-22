@@ -83,8 +83,7 @@ session_start();
 		<p>Jackson da Silva</p> 
 		<p>Sandrelle Rachel</p>
 		<p>Alessandro José</p>
-		<p>José Augusto</p> 
-		<p>Raquel Gabriell</p><br>
+		<p>José Augusto</p><br>
 		
 		</div>
 

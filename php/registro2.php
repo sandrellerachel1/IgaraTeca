@@ -41,8 +41,8 @@ include('conexao.php');
 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$_SESSION['sucesso']=1;
 
-	$pdo->prepare("INSERT INTO Usuario SET USER_NOME= ? USER_SENHA= ? USER_EMAIL= ? ");
-	$pdo->execute([$usuario, $senha, $email]);
+	$stmt=$pdo->prepare("INSERT INTO Usuario SET USER_NOME= ?, USER_SENHA= ?, USER_EMAIL= ? ");
+	$stmt->execute([$usuario, $senha, $email]);
 	
 	//Envio de e-mail para confirmar o usuário 
 	$assunto="Confirme seu cadastro";

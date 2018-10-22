@@ -16,6 +16,11 @@ include('conexao.php');
 			header('location:../index.php');
 			exit();
 		}
+		elseif($value['USER_NOME']==$usuario && $value['USER_SENHA']!=$senha && $value['USER_STATUS']=='1'){
+			$_SESSION['incorreta']=1;
+			header('location: login.php');
+			exit();
+		}
 	}
 
 	

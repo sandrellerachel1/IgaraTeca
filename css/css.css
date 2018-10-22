@@ -60,20 +60,20 @@ body{
 	padding: 5px;
 	border-radius: 5px;
     color: white;
-    background-color: blue;
+    background-color: #2E9AFE;
 }
-.livro .busca{
+.busca{
     border-radius: 4px; 
     height: 30px;
     width: 17%;
 }
-.livro .submit{
+.submit{
     height: 32px; 
     padding-left: 5px; 
     padding-right: 5px; 
     text-align: center; 
     color: white; 
-    background-color: blue; 
+    background-color: #2E9AFE; 
     border:none; border-radius: 4px; 
     cursor: pointer;
     font-size: 17px;
@@ -113,37 +113,48 @@ a{
     width: 300px;
     height: 350px;
 }
-p a{
-	color: black;
-	border-color: black;
-	background-color: white;
-	font-size: 18px;
-	padding:1px 3px;
-}
+
 .livro{
 	margin: auto;
-	padding-top: 0px;
-
-	
+	padding-top: 20px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
-.livro table{
-    margin-top: 60px;
-    width: 80%;
-    text-align: center;
-    border: 1px groove #E6E6E6;
+.livro p{
+    text-align: right;
+    margin-right: 25px;
+}
+.livro img{
+    width: 180px;
+    height: 200px;
+    margin-left: 5px;
+    z-index: 500;
+    margin-bottom: 2px;
+    margin-top: -135px;
+}
+.livro div{
+    border: solid 1px;
+    border-radius: 10px;
+    width: 330px;
+}
+.livro .estrelas{
     
+    margin-left: 220px;
 }
-.livro table tr th{ 
-    padding: 10px;
-    }
-.livro table tr {
-    border-bottom: 2px solid blue;
-    border: solid;
+.livro .estrelas input[type=radio]{
+    display: none;
 }
-.livro table tr td{
-	padding: 10px;
-    border: groove 1px #E6E6E6;
-
+.livro .estrelas label i.fa:before{
+    content: '\f005';
+    color: yellow;
+}
+.livro .estrelas input[type=radio]:checked~ label i.fa:before{
+    color: #CCC;
+}
+.cadlivro{
+    margin: auto;
+    padding-top: 0px;
 }
 
 .cadlivro{
@@ -165,9 +176,8 @@ p a{
     margin-bottom: 20px;
 }
 .cadlivro .file{
-    text-align: right;
-    margin-right: -245px;
-    width: 85px;
+    margin-right: -295px;
+    width: 120px;
     margin-top: -63px;
 }
 .cadlivro p{

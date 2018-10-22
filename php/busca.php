@@ -43,7 +43,7 @@ include('conexao.php');
 			<?php
 
 			$pesquisar=addslashes($_GET['busca']);
-			if (isset($_GET['busca']) && $_GET['busca']==""){
+			if (isset($_GET['busca']) && empty($_GET['busca'])){
 				header('location: livros.php');
 				exit();
 			}
@@ -53,10 +53,26 @@ include('conexao.php');
 				$resultado=$stmt->fetchAll();
 
 				foreach ($resultado as $value) {?>
-					<a href=view.php?i=<?=$value['LIVRO_CODIGO'];?> class="pesquisa"> <?= "Nome do livro: ".$value['LIVRO_NOME']; ?></a><br>
+					<br><div class="grid">
+					<p><a href=delete.php?i=<?= $value['LIVRO_CODIGO']?>>Excluir</a></p>
+					<p>Autor: Fulano</p>
+					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
+					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
+					<p><a href=pedido.php?i=<?= $codigo; ?>>Solicitar pedido</a></p>
+					<?php 
+						$codigo=$value['LIVRO_CODIGO'];
+						$id=$value['LIVRO_IMAGEM'];
+						$local="../img/livros/";
+						$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
+						$stmt->execute([$id]); 
+						$resultado=$stmt->fetchAll();
+						foreach ($resultado as $value) { 
+							$imagem=$local.$value['IMG_NOME']?>
+						<br><a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>" style="width: 200px; height: 220px;"></a><br>
 			<?php
-				} 
-			} 
+					}//foreach
+				} //foreach
+			} //else
 
 			?> 
 			<br><p><a href="livros.php" class="vol">Voltar</a></strong></p>

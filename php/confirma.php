@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])) {
 						exit();
 					}
 				}
-				if(!empty($i)){
+				if(!empty($i) && $value['USER_ID']==$i){
 					$pdo->query("UPDATE Usuario SET USER_STATUS='1' WHERE MD5(USER_ID) = '$i'");
 					echo "Cadastro confirmado com sucesso!";
 				}

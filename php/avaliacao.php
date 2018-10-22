@@ -6,7 +6,7 @@ include('conexao.php');
 <html lang="pt-br">
 <head>
 	<meta charset=UTF-8">
-    <title>Cadastro de Livros</title>
+    <title>Avaliação</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
@@ -35,36 +35,33 @@ include('conexao.php');
 				}	
 				?>			
 			</strong>
-		</ul></center><br><br><br>
+		</ul></center>
 
 	</div><br>
-		<center>
-			<form method="GET" action="busca.php">
-				<label style="font-size: 20px;">Pesquisar: </label>
-				<input class="busca" type="text" name="busca" placeholder=" Digite aqui" required="">
-				<input class="submit" type="submit" value="Buscar"><br>
-			</form>
-		</center>
-	<div class="livro">
-	<?php if (isset($_SESSION['pedido'])) {?>
-		<br><span style="color: blue;">Pedido Realizado com sucesso! Apresente o PDF na biblioteca para retirar o livro.</span>
-		<?php } unset($_SESSION['pedido']);?>
-	<?php
-		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
 
-			<?php   
-				$stmt = $pdo->prepare("SELECT * FROM livro LIMIT 8");
-				$stmt ->execute();
+	<div class="livro" style="margin-top: 60px;">
+
+	<?php
+		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ 
+			header("location: ../index.php"); 
+			exit();
+		}
+	?>
+
+			<?php
+				$get=$_GET['i'];
+				$stmt = $pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO=?");
+				$stmt ->execute([$get]);
 				$resultado = $stmt->fetchAll();
 				foreach ($resultado as $value) : $codigo=$value['LIVRO_CODIGO']?>
-				<br><div class="grid">
+				<br><div class="grid" ">
 					
 					<p>Nome: <?= $value['LIVRO_NOME'];?></p>
 					<p>Autor: Fulano</p>
 					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
 					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
-					<p><a href="#">Avaliar</a></p>
-					<p><a href=delete.php?i=<?= $codigo?>>Excluir</a></p>
+
+
 					<?php 
 						$codigo=$value['LIVRO_CODIGO'];
 						$id=$value['LIVRO_IMAGEM'];
@@ -74,26 +71,8 @@ include('conexao.php');
 						$resultado=$stmt->fetchAll();
 						foreach ($resultado as $value) { 
 							$imagem=$local.$value['IMG_NOME']?>
-						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a>
-
-					<?php }?>
-
-				</div>
-			<?php endforeach ?>
-			<?php } else {?>
-						<?php   
-							$stmt = $pdo->prepare("SELECT * FROM livro LIMIT 8");
-							$stmt ->execute();
-							$resultado = $stmt->fetchAll();
-							foreach ($resultado as $value) : $codigo=$value['LIVRO_CODIGO']?>
-							<br><div class="grid">
-								
-								<p>Nome: <?= $value['LIVRO_NOME'];?></p>
-								<p>Autor: Fulano</p>
-								<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
-								<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
-								<p><a href=pedido.php?i=<?= $codigo; ?> >Solicitar pedido</a></p>
-								<p><form method="POST" action="avalicao2.php" enctype="multipart/form-data">
+						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>" style="margin-top: -75px;" ></a>
+						<p><form method="POST" action="avalicao2.php" enctype="multipart/form-data">
 									<div class="estrelas" style="border: none;">
 										<input type="radio" id="vazio" name="estrela" value="" checked>
 
@@ -116,22 +95,11 @@ include('conexao.php');
 									</div>
 									
 								</form></p>
-								
-								<?php 
-									$codigo=$value['LIVRO_CODIGO'];
-									$id=$value['LIVRO_IMAGEM'];
-									$local="../img/livros/";
-									$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
-									$stmt->execute([$id]); 
-									$resultado=$stmt->fetchAll();
-									foreach ($resultado as $value) { 
-										$imagem=$local.$value['IMG_NOME']?>
-									<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a>
-						</div>
-						<?php } endforeach ?>
 
-			<?php } ?>
+					<?php }?>
 
+				</div>
+			<?php endforeach ?>
 
 	</div>
 
