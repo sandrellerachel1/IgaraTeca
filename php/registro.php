@@ -48,25 +48,31 @@ if(isset($_SESSION['usuario'])){
 				<img src="../img/avatar1.png" class="avatar">
 				<h1>Registro</h1><br>
 				<?php if(isset($_SESSION['user'])){ ?>
-					<span style="color: red;">Usuário já existe!</span>
+					<span style="color: red;">Usuário já existe</span>
 					<?php unset($_SESSION['user']); ?>
 					<?php } elseif(isset($_SESSION['email'])) {?>
-					<span style="color: red;">E-mail já foi utilizado!</span>
+					<span style="color: red;">E-mail já foi utilizado</span>
 					<?php unset($_SESSION['email']); ?>
 					<?php } elseif(isset($_SESSION['senhas'])) {?>
-					<span style="color: red;">Senhas diferentes!</span>
+					<span style="color: red;">Senhas diferentes</span>
 					<?php unset($_SESSION['senhas']); ?>
 				<?php } elseif(isset($_SESSION['emailinvalido'])) {?>
-					<span style="color: red;">E-mail inválido!</span>
+					<span style="color: red;">E-mail inválido</span>
 					<?php unset($_SESSION['emailinvalido']); ?>
+				<?php } elseif(isset($_SESSION['matricula'])) {?>
+					<span style="color: red">Matrícula já utilizada</span>
+					<?php unset($_SESSION['matricula']); ?>
 				<?php } ?>
-				<p>Usuário: </p>
-				<input type="text" name="usuario" placeholder=" Usuário" required="">
-				<p>Senha:<input type="password" name="senha" placeholder=" Senha" required="">
-				<p>Confirmar senha:</p>
-				<input type="password" name="senha2" placeholder=" Confirmar senha" required="">
-				<p>E-mail:</p>
-				<input type="text" name="email" required="" placeholder=" E-mail" required="">
+				
+				<p>Usuário </p>
+				<input style="width: 45%; margin-left: -188px;" type="text" name="usuario" placeholder="Usuário" required="">
+				<p style="margin-top: -81px; margin-left: 185px;">Matrícula
+				<br><input style="width: 100%;" type="text" name="matricula" placeholder="Matrícula" required=""></p>
+				<p>Senha<input type="password" name="senha" placeholder="Senha" required="">
+				<p>Confirmar senha</p>
+				<input type="password" name="senha2" placeholder="Confirmar senha" required="">
+				<p>E-mail</p>
+				<input type="text" name="email" required="" placeholder="E-mail" required="">
 				<input type="submit" value="Enviar">
 			</form>
 		</center>

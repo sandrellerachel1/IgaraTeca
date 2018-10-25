@@ -10,6 +10,7 @@ if(!isset($_SESSION['usuario'])){
 $usuario=$_SESSION['id'];
 $i=addslashes($_GET['i']);
 
+
 //Verifica se o usuário já possui algum pedido
 $stmt=$pdo->prepare("SELECT * FROM pedido ");
 $stmt->execute();
@@ -31,21 +32,22 @@ foreach ($resultado as $value) {
 //Registra o pedido	
 
 $data=date('Y-m-d H:i:s');
+$data2=date('i:s');
 $dataexp=date('Y-m-d H:i:s', strtotime('+7 day'));
-$stmt = $pdo->prepare("INSERT INTO pedido SET PED_USER_ID='$usuario', PED_LIVRO_CODIGO='$i', PED_STATUS='1', PED_DATA='$data', PED_DATA_PRAZO='$dataexp' ");
-$stmt ->execute();
-$_SESSION['pedido']=1;?>
+$codigo=md5(base64_encode($data2.$usuario));
+$codigo2=substr($codigo, -9);
 
-<?php
+$stmt=$pdo->prepare("INSERT INTO pedido SET PED_USER_ID=?, PED_COD_LIVRO=?, PED_STATUS=?, PED_DATA=?, PED_DATA_PRAZO=?, PED_CODIGO=? ");
+$stmt->execute([$usuario, $_SESSION['livro'], 1, $data, $dataexp, $codigo2]);
+if($stmt){$_SESSION['pedido']=1;
 
 
-	//$id=$pdo->lastInsertId();
 	//$md5=md5($id);
 	
 	//$head="From: IGARATECA";
 	
 	//mail($email, $assunto, $mensagem, $head);
 
-header('location: comprovante.php');
+header('location: comprovante.php');}
 
  ?>

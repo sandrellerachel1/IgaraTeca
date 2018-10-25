@@ -18,6 +18,9 @@ include('conexao.php');
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
 				<a type="button" class="menu" href="livros.php">Livros</a>
+				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
+					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+				} ?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				
@@ -51,11 +54,11 @@ include('conexao.php');
 					<span style="color: red;">Senhas diferentes!</span>
 					<?php unset($_SESSION['diferente']); ?>
 					<?php } ?>
-				<p>Senha atual:</p>
+				<p>Senha atual</p>
 				<input type="password" name="senha" placeholder="Sua senha" required=""><br>
-				<p>Nova senha:</p>
+				<p>Nova senha</p>
 				<input type="password" name="novasenha" placeholder="Nova senha" required=""><br>
-				<p>Confirmar senha:</p>
+				<p>Confirmar senha</p>
 				<input type="password" name="novasenha2" placeholder="Confirmar nova senha" required=""><br>
 				<input type="submit" value="Redefinir">
 			</form>

@@ -18,9 +18,12 @@ include('conexao.php');
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
 				<a type="button" class="menu" href="livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
-					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
-				} ?>
+				<?php if(isset($_SESSION['usuario'])){
+							if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
+								echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+							}
+						} 
+				?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				<?php
@@ -42,8 +45,8 @@ include('conexao.php');
 	<div class="view"><center>
 		<?php
 			$dado=$_GET['i'];
-			$stmt=$pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO='$dado'"); 
-			$stmt->execute();
+			$stmt=$pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO=?"); 
+			$stmt->execute([$dado]);
 			$resultado = $stmt->fetchAll();	?>
 			
 			<?php foreach ($resultado as $value) { ?>
@@ -63,7 +66,7 @@ include('conexao.php');
 		
 			<?php } }?>
 		<br>
-		<p><a href="livros.php" class="vol">Voltar</a></strong></p>
+		<p style=" margin-bottom: 40px;"><a href="livros.php" class="vol">Voltar</a></strong></p>
 	</center></div>
 	<div class="copyright">
 	<p>©Copyright 2018</p>

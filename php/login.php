@@ -52,10 +52,10 @@ if(isset($_SESSION['usuario'])){
 					<span style="color: red;">Senha incorreta!</span>
 					<?php unset($_SESSION['incorreta']); ?>
 				<?php } ?>
-	            <p>Usuário:</p>
-	            <input type="text" name="usuario" placeholder="Usuário" required="" value="<?php $_SESSION['usuario'];?>">
-	            <p>Senha:</p>
-	            <input type="password" name="senha" placeholder="Senha" required="" value="<?php $_SESSION['senha'];?>">
+	            <p>Usuário</p>
+	            <input type="text" name="usuario" placeholder="Usuário" required="">
+	            <p>Senha</p>
+	            <input type="password" name="senha" placeholder="Senha" required="">
 	            <input type="submit" value="Login">
 			</form>
 		</center>

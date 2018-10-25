@@ -19,7 +19,7 @@ include('conexao.php');
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
 				<a type="button" class="menu" href="livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
+				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
 					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
 				} ?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
@@ -39,25 +39,29 @@ include('conexao.php');
 		</ul></center><br><br><br>
 
 	</div><br>
-	
-	<div class="cadlivro"><center>
+	<center>
+	<div class="cadlivro">
+		<?php if (isset($_SESSION['livro_existe'])){?>
+			<script> alert('ISBN já cadastrado');</script>
+		<?php } unset($_SESSION['livro_existe']) ;?>
 		<?php
 		//Verifica se o usuário pode ter acesso ao cadastro de livros
-		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
+		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 	    
 		<form method="POST" action="addlivro.php" enctype="multipart/form-data">
 			<h1>Cadastro de livros</h1>
 			<p>Nome do livro:</p>
-			<input type="text" name="livro" placeholder="Nome do livro" required=""><br>
+			<input style="width: 50%; margin-left: -227px;" type="text" name="livro" placeholder="Nome do livro" required="">
+			<p style="margin-top: -81px; margin-left: 275px;">Autor:
+			<br><input style="width: 100%;" type="text" name="autor" placeholder="Nome do autor" required=""></p>
 			<p>Tipo do livro:</p><br>
 			<select name="tipo" required="" >
 				<option value="" disabled="">Tipo do Livro</option>
 				<option value="acao">Ação</option>
 				<option value="romance">Romance</option>
-				<option value="infantil">Infantil</option>
 				<option value="didatico">Didático</option>
 			</select>
-			<p class="file">Selecionar imagem: <input type="file" name="arquivo"></p>
+			<p class="file">Selecionar imagem: <input type="file" name="arquivo" required=""></p>
 			<p>ISBN do livro:</p>
 			<input type="text" name="codigo" placeholder="ISBN do livro" required=""><br>
 			<p>Resumo do livro:</p><br>
@@ -65,8 +69,8 @@ include('conexao.php');
 			<input type="submit" value="Cadastrar">
 		</form>
 		<?php } ?>
-
-	</div>
+	</div><br>
+	</center>
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

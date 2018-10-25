@@ -38,9 +38,12 @@ session_start();
 
 				<a type="button" class="menu" href="index.php">Início</a>
 				<a type="button" class="menu" href="php/livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
-					echo '<a type="button" class="menu" href="php/cadLivros.php">Cadastro de livros</a>';
-				} ?>
+				<?php if(isset($_SESSION['usuario'])){
+							if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
+								echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+							}
+						} 
+				?>
 				<a type="button" class="menu" href="php/funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="php/sobre.php">Sobre</a>
 				<?php
@@ -68,9 +71,9 @@ session_start();
 				<a herf="#" class="proxima" style="font-size: 40px;">&raquo;</a>
 			</section>
 			<ul>
-				<a href="php/view.php?i=hitman"><li><img src="img/hitman.jpg" width="300" height="350" position="center"></li></a>
-				<a href="php/view.php?i=gramatica"><li><img src="img/gramatica.jpg" width="300" height="350" position="center"></li></a>
-				<a href="php/view.php?i=cortiço"><li><img src="img/ocortico.jpg" width="300" height="350" position="center"></li></a>
+				<a href="php/view.php?i=3653453"><li><img src="img/hitman.jpg" width="300" height="350" position="center"></li></a>
+				<a href="php/view.php?i=4334553"><li><img src="img/gramatica.jpg" width="300" height="350" position="center"></li></a>
+				<a href="php/view.php?i=3546346"><li><img src="img/ocortico.jpg" width="300" height="350" position="center"></li></a>
 			</ul>
 		</div>
 
@@ -78,9 +81,7 @@ session_start();
 		
 		<div class="desen">
 		<p><strong>Desenvolvedores:</strong></p><br>
-		<p>Ricardo Maranhão</p>
-		<p> Rivaldo Valle</p> 
-		<p>Jackson da Silva</p> 
+		<p>Ricardo Maranhão</p> 
 		<p>Sandrelle Rachel</p>
 		<p>Alessandro José</p>
 		<p>José Augusto</p><br>

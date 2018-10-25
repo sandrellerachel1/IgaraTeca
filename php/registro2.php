@@ -15,6 +15,7 @@ include('conexao.php');
 	$usuario= addslashes($_POST['usuario']);
 	$senha=md5(addslashes($_POST['senha']));
 	$email=addslashes($_POST['email']);
+	$matricula=addslashes($_POST['matricula']);
 
 	//Verifica se o usuario ou email já existe
 	$stmt=$pdo->prepare("SELECT * FROM Usuario");
@@ -33,6 +34,11 @@ include('conexao.php');
 				header('location: registro.php');
 				exit();
 			}
+			elseif ($_POST['matricula']==$value['USER_MATRICULA']) {
+				$_SESSION['matricula']=1;
+				header('location: registro.php');
+				exit();	
+			}
 		}
 	}
 
@@ -41,8 +47,8 @@ include('conexao.php');
 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$_SESSION['sucesso']=1;
 
-	$stmt=$pdo->prepare("INSERT INTO Usuario SET USER_NOME= ?, USER_SENHA= ?, USER_EMAIL= ? ");
-	$stmt->execute([$usuario, $senha, $email]);
+	$stmt=$pdo->prepare("INSERT INTO Usuario SET USER_NOME= ?, USER_MATRICULA=?, USER_SENHA= ?, USER_EMAIL= ? ");
+	$stmt->execute([$usuario, $matricula, $senha, $email]);
 	
 	//Envio de e-mail para confirmar o usuário 
 	$assunto="Confirme seu cadastro";

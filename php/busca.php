@@ -18,7 +18,7 @@ include('conexao.php');
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
 				<a type="button" class="menu" href="livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
+				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
 					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
 				} ?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
@@ -54,8 +54,10 @@ include('conexao.php');
 
 				foreach ($resultado as $value) {?>
 					<br><div class="grid">
-					<p><a href=delete.php?i=<?= $value['LIVRO_CODIGO']?>>Excluir</a></p>
-					<p>Autor: Fulano</p>
+					<?php if (isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ 
+						echo "<p><a href=delete.php?i=".$value['LIVRO_CODIGO'].">Excluir</a></p"; }?>
+					<p>Nome: <?= $value['LIVRO_NOME'];?></p>
+					<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
 					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
 					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
 					<p><a href=pedido.php?i=<?= $codigo; ?>>Solicitar pedido</a></p>

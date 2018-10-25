@@ -19,9 +19,12 @@ include('conexao.php');
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
 				<a type="button" class="menu" href="livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){
-					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
-				} ?>
+				<?php if(isset($_SESSION['usuario'])){
+							if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
+								echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+							}
+						} 
+				?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				<?php
@@ -38,7 +41,7 @@ include('conexao.php');
 		</ul></center>
 
 	</div><br>
-
+	<center>
 	<div class="livro" style="margin-top: 60px;">
 
 	<?php
@@ -47,6 +50,7 @@ include('conexao.php');
 			exit();
 		}
 	?>
+
 
 			<?php
 				$get=$_GET['i'];
@@ -57,9 +61,33 @@ include('conexao.php');
 				<br><div class="grid" ">
 					
 					<p>Nome: <?= $value['LIVRO_NOME'];?></p>
-					<p>Autor: Fulano</p>
+					<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
 					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
 					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
+					<p><form method="POST" action="avaliacao2.php" enctype="multipart/form-data">
+							<div class="estrelas" style="border: none; margin-right: -160px;">
+								<input type="radio" id="vazio" name="estrela" value="" checked>
+
+								<label for="estrela_um"><i class="fa"></i></label>
+								<input type="radio" id="estrela_um" name="estrela" value="1">
+
+								<label for="estrela_dois"><i class="fa"></i></label>
+								<input type="radio" id="estrela_dois" name="estrela" value="2">
+
+								<label for="estrela_tres"><i class="fa"></i></label>
+								<input type="radio" id="estrela_tres" name="estrela" value="3">
+
+								<label for="estrela_quatro"><i class="fa"></i></label>
+								<input type="radio" id="estrela_quatro" name="estrela" value="4">
+
+								<label for="estrela_cinco"><i class="fa"></i></label>
+								<input type="radio" id="estrela_cinco" name="estrela" value="5"><br>
+
+								<input type="submit" value="Avaliar">
+								<input type="hidden" name="codigo" value=<?= $codigo;?> >
+							</div>
+									
+								</form></p>
 
 
 					<?php 
@@ -71,37 +99,14 @@ include('conexao.php');
 						$resultado=$stmt->fetchAll();
 						foreach ($resultado as $value) { 
 							$imagem=$local.$value['IMG_NOME']?>
-						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>" style="margin-top: -75px;" ></a>
-						<p><form method="POST" action="avalicao2.php" enctype="multipart/form-data">
-									<div class="estrelas" style="border: none;">
-										<input type="radio" id="vazio" name="estrela" value="" checked>
-
-										<label for="estrela_um"><i class="fa"></i></label>
-										<input type="radio" id="estrela_um" name="estrela" value="1">
-
-										<label for="estrela_dois"><i class="fa"></i></label>
-										<input type="radio" id="estrela_dois" name="estrela" value="2">
-
-										<label for="estrela_tres"><i class="fa"></i></label>
-										<input type="radio" id="estrela_tres" name="estrela" value="3">
-
-										<label for="estrela_quatro"><i class="fa"></i></label>
-										<input type="radio" id="estrela_quatro" name="estrela" value="4">
-
-										<label for="estrela_cinco"><i class="fa"></i></label>
-										<input type="radio" id="estrela_cinco" name="estrela" value="5"><br>
-
-										<input type="submit" value="Avaliar">
-									</div>
-									
-								</form></p>
-
+						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>" style="margin-top: -175px;" ></a>
+						
 					<?php }?>
 
 				</div>
 			<?php endforeach ?>
 
-	</div>
+	</div></center>
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>
