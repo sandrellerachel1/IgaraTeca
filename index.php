@@ -40,7 +40,8 @@ session_start();
 				<a type="button" class="menu" href="php/livros.php">Livros</a>
 				<?php if(isset($_SESSION['usuario'])){
 							if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
-								echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
+								echo '<a type="button" class="menu" href="php/cadLivros.php">Cadastro de livros</a>', PHP_EOL;
+								echo '<a type="button" class="menu" href="php/listped.php">Pedidos</a>';
 							}
 						} 
 				?>

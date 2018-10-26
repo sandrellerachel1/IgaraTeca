@@ -22,9 +22,13 @@ if(!isset($_SESSION['usuario'])){
 			<strong>
 				<a type="button" class="menu" href="../index.php">Início</a>
 				<a type="button" class="menu" href="livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
-					echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>';
-				} ?>
+				<?php if(isset($_SESSION['usuario'])){
+						if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
+							echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>', PHP_EOL;
+							echo '<a type="button" class="menu" href="listped.php">Pedidos</a>';
+						}
+					} 
+				?>
 				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
 			    <a type="button" class="menu" href="sobre.php">Sobre</a>
 				

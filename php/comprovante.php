@@ -68,8 +68,8 @@ $mensagem="<center><img src=\"../img/logo.png\" id=\"logotipo\"></a></center><br
 	);
 	
  unset($_SESSION['livro']);
- header('location: livros.php')
-} 
+ header('location: livros.php');
+}
 else{
 	header('location: ../index.php');
 }

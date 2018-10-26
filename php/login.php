@@ -25,7 +25,8 @@ if(isset($_SESSION['usuario'])){
 				<a type="button" class="menu" href="registro.php">Registrar-se</a>
 				<?php
 				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
+					echo '<a type="button" class="menu" href="logout.php">Sair</a>', PHP_EOL;
+					echo '<a type="button" class="menu" href="listped.php">Pedidos</a>';
 				}
 				else{
 					echo '<a type="button" class="menu" href="login.php">Login</a>';

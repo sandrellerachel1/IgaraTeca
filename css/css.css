@@ -467,3 +467,9 @@ img{
     border-radius: 20px;
     cursor: pointer;
 }
+.lista{
+    width: 80%;
+}
+.lista #pedidos{
+    width: 90%;
+}
