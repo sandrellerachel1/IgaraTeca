@@ -13,37 +13,34 @@ if(isset($_SESSION['usuario'])){
 	<link rel="stylesheet" type="text/css" href="../css/css.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 	<link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
+	<link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/menu.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
 	<div class="home">
-		<center><ul>
-			<strong>
-				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="livros.php">Livros</a>
-				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
-			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<?php
-				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
-				}
-				else{
-					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
-					echo '<a type="button" class="menu" href="login.php">Login</a>';
-				}	
-				?>
-			
-			</strong>
-		</ul></center><br><br><br>
+		<a href="../index.php"><img src="../img/logo3.png" id="logotipo" class="animated bounceInLeft"></a>
+		<header>
+		<div class="menu_bar">
+			<a href="#" class="btn-menu"><span class="icon icon-menu"></span></a>
+		</div>
 
-	</div><br>
+		<nav>
+			<ul>
+				<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
+				<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+				<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+				<li><a href="registro.php"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
+				<li><a href="login.php"><span class="icon icon-user"></span>Login</a></li>
+			</ul>
+		</nav>
+	</header>
+	</div>
 
 	<div class="registro">
 		<center>
-			<script type="text/javascript">
-				alert("Atenção! Ao cadastrar-se verifique se seu e-mail está correto, pois só será possível fazer login com seu usuário depois que o cadastro for confirmado no e-mail.");
-			</script>
-			
+
 			<form method="POST" action="registro2.php">
 				<img src="../img/avatar1.png" class="avatar">
 				<h1>Registro</h1><br>
@@ -65,14 +62,14 @@ if(isset($_SESSION['usuario'])){
 				<?php } ?>
 				
 				<p>Usuário </p>
-				<input style="width: 45%; margin-left: -188px;" type="text" name="usuario" placeholder="Usuário" required="">
-				<p style="margin-top: -81px; margin-left: 185px;">Matrícula
-				<br><input style="width: 100%;" type="text" name="matricula" placeholder="Matrícula" required=""></p>
-				<p>Senha<input type="password" name="senha" placeholder="Senha" required="">
+				<input class="usuario" type="text" name="usuario" placeholder="Seu nome" required="">
+				<p class="matricula" style="">Matrícula
+				<br><input type="text" name="matricula" placeholder="Sua matrícula" required=""></p>
+				<p>Senha<input type="password" name="senha" placeholder="Insira uma senha" required="">
 				<p>Confirmar senha</p>
-				<input type="password" name="senha2" placeholder="Confirmar senha" required="">
+				<input type="password" name="senha2" placeholder="Confirme a senha" required="">
 				<p>E-mail</p>
-				<input type="text" name="email" required="" placeholder="E-mail" required="">
+				<input type="text" name="email" required="" placeholder="Seu e-mail" required="">
 				<input type="submit" value="Enviar">
 			</form>
 		</center>

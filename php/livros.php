@@ -11,46 +11,50 @@ include('conexao.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
+	<script type="text/javascript" src="../js/jquery-latest.js"></script>
+	<script type="text/javascript" src="../js/menu.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
 	<div class="home">
-		<center><ul>
-			<strong>
-				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="livros.php">Livros</a>
-				<?php if(isset($_SESSION['usuario'])){
-						if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){
-							echo '<a type="button" class="menu" href="cadLivros.php">Cadastro de livros</a>', PHP_EOL;
-							echo '<a type="button" class="menu" href="listped.php">Pedidos</a>';
-						}
-					} 
-				?>
-				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
-			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<?php
-				if(isset($_SESSION['usuario'])){
-					echo '<a type="button" class="menu" id="usu" href="conta.php">'.$_SESSION['usuario'].'</a>', PHP_EOL;
-					echo '<a type="button" class="menu" href="logout.php">Sair</a>';
-				}
-				else{
-					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
-					echo '<a type="button" class="menu" href="login.php">Login</a>';
-				}	
-				?>			
-			</strong>
-		</ul></center><br><br><br>
+		<a href="../index.php"><img src="../img/logo3.png" id="logotipo" class="animated bounceInLeft"></a>
+			<header>
+			<div class="menu_bar">
+				<a href="#" class="btn-menu"><span class="icon icon-menu"></span></a>
+			</div>
+			
+			<nav>
+				<ul>
+					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
+					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<?php if(isset($_SESSION['usuario'])){
+								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
+					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
+					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
+					<?php } }  ?>
+					
+					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<?php
+					if(isset($_SESSION['usuario'])){ ?>
+					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
+					<li><a href="logout.php"><span class="icon icon-exit"></span>Sair</a></li>
+					<?php }else {?>
+					<li><a href="registro.php"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
+					<li><a href="login.php"><span class="icon icon-user"></span>Login</a></li>
+					<?php } ?>
+				</ul>
+			</nav>
+		</header>
+	</div>
 
-	</div><br>
-		<center>
+	<center>
+	<div class="livro">
 			<form method="GET" action="busca.php">
 				<label style="font-size: 20px;">Pesquisar: </label>
 				<input class="busca" type="text" name="busca" placeholder=" Digite aqui" required="">
 				<input class="submit" type="submit" value="Buscar"><br>
 			</form>
-		</center>
-		<center>
-	<div class="livro">
 	<?php if (isset($_SESSION['pedido'])) {?>
 		<br><span style="color: blue;">Pedido Realizado com sucesso! Apresente o PDF na biblioteca para retirar o livro.</span>
 		<?php } unset($_SESSION['pedido']);?>
@@ -99,7 +103,7 @@ include('conexao.php');
 						<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
 						<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
 						<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
-						<p><a href=pedido.php?i=<?= $codigo; ?> >Solicitar pedido</a></p>
+						<p><a href=pedido.php?i=<?= $codigo; ?> >Solicitar livro</a></p>
 						<p><a href=avaliacao.php?i=<?= $codigo?>>Avaliar</a></p>
 						
 						
@@ -124,6 +128,7 @@ include('conexao.php');
 	<div class="copyright">
 	<p>©Copyright 2018</p>
 	</div>
+
 
 </body>
 </html>

@@ -16,27 +16,40 @@ if(!isset($_SESSION['usuario']) ){
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
+	<script type="text/javascript" src="../js/menu.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 </head>
 <body>
-	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
 	<div class="home">
-		<center>
-			<ul><strong>
-				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="livros.php">Livros</a>
-				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
-			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<a type="button" class="menu" href="registro.php">Registrar-se</a>
-				<a type="button" class="menu" href="listped.php">Pedidos</a>
-				<a type="button" class="menu" id="usu" href="conta.php"><?= $_SESSION['usuario'];?></a>
-				<a type="button" class="menu" href="logout.php">Sair</a>
-
-
-			
-			</strong></ul>
-		</center><br><br><br>
-
+		<a href="../index.php"><img src="../img/logo3.png" id="logotipo" class="animated bounceInLeft"></a>
+		<header>
+		<div class="menu_bar">
+			<a href="#" class="btn-menu"><span class="icon icon-menu"></span></a>
+		</div>
+			<nav>
+				<ul>
+					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
+					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<?php if(isset($_SESSION['usuario'])){
+								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
+					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
+					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
+					<?php } }  ?>
+					
+					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<?php
+					if(isset($_SESSION['usuario'])){ ?>
+					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
+					<li><a href="logout.php"><span class="icon icon-exit"></span>Sair</a></li>
+					<?php }else {?>
+					<li><a href="registro.php"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
+					<li><a href="login.php"><span class="icon icon-user"></span>Login</a></li>
+					<?php } ?>
+				</ul>
+			</nav>
+		</header>
 	</div>
 
 	
@@ -55,7 +68,8 @@ if(!isset($_SESSION['usuario']) ){
 		} );
 	</script>
 
-		<center><div class="lista">
+	<center>
+		<div class="lista">
 			<table id="pedidos">
 				<thead>
 					<tr>
@@ -95,7 +109,8 @@ if(!isset($_SESSION['usuario']) ){
 				</tbody>
 			</table>
 		
-	</div></center>
+		</div>
+	</center>
 
 
 </body>

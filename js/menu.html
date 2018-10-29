@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Menu</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+	<div class="home">
+	<header>
+		<div class="menu_bar">
+			<a href="#" class="btn-menu"><span class="icon icon-menu" style="color: white;"></span></a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="#"><span class="icon icon-home"></span>Início</a></li>
+				<li><a href="#"><span class="icon icon-book"></span>Livros</a></li>
+				<li><a href="#"><span class="icon icon-insert-template"></span>Funcionalidades</a></li>
+				<li><a href="#"><span class="icon icon-eye"></span>Sobre</a></li>
+				<li><a href="#"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
+				<li><a href="#"><span class="icon icon-user"></span>Login</a></li>	
+			</ul>
+		</nav>
+	</header>
+</div>
+	<div class="slide">
+	<center>
+	<a href="#">Teste</a>
+	<a href="#"><img src="../img/logo3.png"></a>
+	</center>
+</div>
+
+
+	<script type="text/javascript" src="jquery-latest.js"></script>
+	<script type="text/javascript">
+		$(document).ready(main);
+
+			var contador = 1;
+
+			function main(){
+				$('.menu_bar').click(function(){
+					// $('nav').toggle(); 
+
+					if(contador == 1){
+						$('nav').animate({
+							left: '0'
+						});
+						contador = 0;
+					} else {
+						contador = 1;
+						$('nav').animate({
+							left: '-100%'
+						});
+					}
+
+				});
+
+			};
+	</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 session_start();
 include('conexao.php');
 if (isset($_SESSION['usuario'])) {
-	echo "Erro! Você está logado com outro usuário. Faça o logout e tente novamente.";
+	$_SESSION['user_logado']=1;
 	header('location: ../index.php');
 	exit();
 }
@@ -11,35 +11,35 @@ if (isset($_SESSION['usuario'])) {
 <html lang="pt-br">
 <head>
 	<meta charset="utf-8">
-	<title>Registrar-se</title>
+	<title>Confirmação</title>
 	<link rel="stylesheet" type="text/css" href="../css/css.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
 	<link rel="shortcut icon" type="image/x-png" href="../img/logo.png">
+	<script type="text/javascript" src="../js/jquery-latest.js"></script>
+	<script type="text/javascript" src="../js/menu.js"></script>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-	<a href="../index.php"><img src="../img/logo.png" id="logotipo" class="animated bounceInLeft"></a>
 	<div class="home">
-		<center><ul>
-			<strong>
-				<a type="button" class="menu" href="../index.php">Início</a>
-				<a type="button" class="menu" href="cadLivros.php">Livros</a>
-				<a type="button" class="menu" href="funcionalidades.php">Funcionalidades</a>
-			    <a type="button" class="menu" href="sobre.php">Sobre</a>
-				<a type="button" class="menu" href="desenvolvedores.php">Desenvolvedores</a>
-				<?php
-				if(isset($_SESSION['usuario'])){
-				echo '<a type="button" class="menu" href="logout.php">Sair</a>';
-				}
-				else{
-					echo '<a type="button" class="menu" href="registro.php">Registrar-se</a>', PHP_EOL;
-					echo '<a type="button" class="menu" href="login.php">Login</a>';
-				}	
-				?>
-			
-			</strong>
-		</ul></center><br><br><br>
+		<a href="../index.php"><img src="../img/logo3.png" id="logotipo" class="animated bounceInLeft"></a>
+		<header>
+		<div class="menu_bar">
+			<a href="#" class="btn-menu"><span class="icon icon-menu"></span></a>
+		</div>
+		
+			<nav>
+				<ul>
+					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
+					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<li><a href="registro.php"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
+					<li><a href="login.php"><span class="icon icon-user"></span>Login</a></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
 
-	</div><br>
 		<div class="sobre">
 		<center>
 			<p><?php 
@@ -54,7 +54,7 @@ if (isset($_SESSION['usuario'])) {
 						exit();
 					}
 				}
-				if(!empty($i) && $value['USER_ID']==$i){
+				if(!empty($i) && md5($value['USER_ID'])==$i){
 					$pdo->query("UPDATE Usuario SET USER_STATUS='1' WHERE MD5(USER_ID) = '$i'");
 					echo "Cadastro confirmado com sucesso!";
 				}
