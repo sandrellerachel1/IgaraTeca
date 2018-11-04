@@ -29,8 +29,8 @@ if(isset($_SESSION['usuario'])){
 		<nav>
 			<ul>
 				<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-				<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
-				<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+				<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>
+				<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 				<li><a href="registro.php"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
 				<li><a href="login.php"><span class="icon icon-user"></span>Login</a></li>
 			</ul>

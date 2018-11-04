@@ -3,13 +3,14 @@ session_start();
 include('conexao.php');
 if(!isset($_SESSION['usuario']) ){
 	header('location: ../index.php');
+	exit();
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<meta charset=UTF-8">
-    <title>Login</title>
+    <title>Pedidos</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
@@ -31,14 +32,14 @@ if(!isset($_SESSION['usuario']) ){
 			<nav>
 				<ul>
 					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>
 					<?php if(isset($_SESSION['usuario'])){
 								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
 					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
 					<?php } }  ?>
 					
-					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 					<?php
 					if(isset($_SESSION['usuario'])){ ?>
 					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
@@ -69,6 +70,7 @@ if(!isset($_SESSION['usuario']) ){
 	</script>
 
 	<center>
+		<input type="text" id="pesquisa">
 		<div class="lista">
 			<table id="pedidos">
 				<thead>
@@ -81,18 +83,21 @@ if(!isset($_SESSION['usuario']) ){
 						<td>E-mail</td>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tbody">
 					<?php 
 					$stmt=$pdo->prepare("SELECT * FROM pedido");
 					$stmt->execute();
 					$resultado=$stmt->fetchAll();
 					foreach ($resultado as $value) { ?>
 
+						
+							
 					<tr><?php $_SESSION['id_pedido']=$value['PED_USER_ID'];?>
 						<td><?= $value['PED_COD_LIVRO']; ?></td>
 						<td><?= $value['PED_DATA']; ?></td>
 						<td><?= $value['PED_CODIGO']; ?></td>
 					
+				
 					<?php 
 					$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_ID=?");
 					$stmt->execute([$_SESSION['id_pedido']]);
@@ -108,9 +113,32 @@ if(!isset($_SESSION['usuario']) ){
 				<?php unset($_SESSION['id_pedido']); } }?>
 				</tbody>
 			</table>
-		
+			
 		</div>
 	</center>
+	<script type="text/javascript">
+		var tbody=document.getElementById('tbody');
+		document.getElementById("pesquisa").addEventListener("keyup", function(){
+		var busca=document.getElementById("pesquisa").value.toLowerCase();
+			achou=false;
+			var tr=tbody.childNodes;
+			var td=tr.childNodes;
+			var value=td.childNodes[0].nodeValue.toLowerCase();
+			if(busca>=0){
+				achou=true;
+
+			}
+			
+			if(achou){
+				tr.style.display="table-row";
+			}
+			else{
+				tr.style.display="none";
+			}
+			
+		});
+	</script>
+
 
 
 </body>

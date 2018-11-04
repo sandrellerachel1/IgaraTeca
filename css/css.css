@@ -5,12 +5,11 @@
 	font-family: 'Fjalla One', sans-serif;
 }
 body{
-	background-image: url('../img/li.jpg');
-    background-position: absolute ;
-    background-repeat: no-repeat;
     padding: 13px 0px;
-	width: 100%;
-	height: absolute; /*800 ||absolute*/
+	background-image: url('../img/9.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
 }
 .h1{
 	margin: auto;
@@ -27,6 +26,7 @@ body{
 	border:groove 1.7px blue;
 	padding: 1px 5px;
 }
+/*motivacional*/
 .mot{
 	width: 55%;
 	height: 40%;
@@ -34,6 +34,7 @@ body{
 	padding-top: 8px;
     margin-bottom: 40px; 
 }
+/*Desenvolvedores (medio)*/
 .desen{
 	text-align: center;
 	width: 170px;
@@ -43,6 +44,7 @@ body{
     margin-top: -45px;
     border-radius: 4px;
 }
+/*botão de voltar para página de livros */
 .vol{
 	width: 50px;
 	height: 40px;
@@ -51,12 +53,15 @@ body{
     color: white;
     background-color: #2E9AFE;
 }
+
+/*input para pesquisar livros (medio)*/
 .busca{
     border-radius: 4px; 
     height: 30px;
     width: 17%;
-    border: none;
+    border: solid 1px #2E9AFE;
 }
+/*botão para pesquisar livros (medio)*/
 .submit{
     height: 30px; 
     padding-left: 5px; 
@@ -68,22 +73,27 @@ body{
     cursor: pointer;
     font-size: 17px;
 }
+
 .pesquisa{
     color: black;
     font-size: 20px;
 }
 a{
 	text-decoration: none;
-	color: white;
 	text-align: center;
 	cursor: pointer;
+    color: blue;
 }
+/*exibição dos livros (medio)*/
 .livro{
 	margin: auto;
 	padding-top: 40px;
     display: grid;
     grid-template-columns: column column column;
     margin-bottom: 60px;
+}
+.livro a{
+    color: blue;
 }
 .livro p{
     text-align: right;
@@ -126,6 +136,7 @@ a{
 .livro .estrelas input[type=radio]:checked~ label i.fa:before{
     color: #CCC;
 }
+/*Cadastro de livros (medio)*/
 .cadlivro{
     width: 40%;
     height: 630px;
@@ -140,6 +151,7 @@ a{
     border-radius: 6px;
     margin-top: 150px;
     margin-bottom: 50px;
+    border: solid 1px #848484;
 }
 .cadlivro input{
     width: 100%;
@@ -154,7 +166,6 @@ a{
 	text-align: left;
 }
 .cadlivro h1{
-    
     padding: 0 0 20px;
     text-align: center;
     font-size: 22px;
@@ -203,7 +214,7 @@ a{
 	padding-top: 40px;
 	text-align: center;
 }
-
+/*Texto acima do slide (medio)*/ 
 .destaque{
 	margin-top: 60px;
 }
@@ -220,9 +231,11 @@ a{
 	padding: 0;
 }
 .slide a li img{
-    width: 300px;
+    width: 100%;
     height: 350px;
     position: center;
+    margin: auto;
+
 }
 div.slide section.botao{
 	display: none;
@@ -247,6 +260,41 @@ div.slide section.botao a:hover{
 	background-color: #555;
 
 }
+.teste {
+    display: flex;
+    width: 30%;
+    border: groove 2px;
+    border-radius: 4px;
+    margin-bottom: 40px;
+}
+.acervo{
+    width: 140px;
+    margin: auto;
+    margin-top: 10px;
+}
+.acervo span{
+    font-size: 40px;
+    color: blue;
+}
+.acervo label{
+    color: blue;
+}
+.acesso{
+    margin:auto;
+    width: 140px;
+    margin-bottom: 20px;
+}
+.acesso span{
+    font-size: 40px;
+    color: blue;
+}
+.acesso label{
+    color: blue;
+}
+.acesso p{
+    
+}
+
 .copyright {
 	color: white;
 	height: 24px;
@@ -269,6 +317,7 @@ img{
     width: 360px;
     height: 410px;
     background: #D8D8D8;
+    opacity: 0.80;
     color: black;
     top: 50%;
     left: 50%;
@@ -279,6 +328,7 @@ img{
     border-radius: 6px;
     margin-top: 300px; /*17 || 250*/
     margin-bottom: -150px;
+    border: solid 1px #848484;
 }
 .avatar{
     width: 100px;
@@ -322,12 +372,12 @@ img{
     border-radius: 20px;
     cursor: pointer;
 }
-
 .registro{
     width: 32%;
-    height: 560px; /*410px; */
-    background: #D8D8D8;
+    height: 560px;
+    background:#D8D8D8;
     color: black;
+    opacity: 0.80;
     top: 50%;
     left: 50%;
     position: relative;
@@ -335,8 +385,9 @@ img{
     box-sizing: border-box;
     padding: 70px 30px;
     border-radius: 6px;
-    margin-top: 370px;/*70*/
-    margin-bottom: -225px;  
+    margin-top: 370px;
+    margin-bottom: -225px;
+    border: solid 1px #848484;
 }
 .registro p{
     margin: 0;
@@ -357,9 +408,6 @@ img{
     margin-left: 53%;
     width: 47%;
 }
-.registro p.matricula input{
-
-}
 .registro input[type="text"], input[type="password"]{
     border: none;
     border-bottom: 1px solid white;
@@ -379,6 +427,39 @@ img{
     border-radius: 20px;
     cursor: pointer;
 }
+/*Busca dos livros (medio)*/
+.form_busca{
+    margin-top: 40px;
+}
+.form_busca label{
+    font-size: 20px;
+}
+/*Exibição dos livros (medio)*/
+ div.col-md-6{
+    width: 250px;
+    height: 470px;
+    border: solid 1px #6E6E6E;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px; 
+}
+.row{
+    width: 80%;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 40px;
+    /*display: flex;*/
+}
+.row .col-md-6 img{
+    width: 200px;
+    height: 220px;
+}
+.row .col-md-6 p{
+    margin-top: -7px;
+}
+/* Alterar senha (medio)*/
 .recupera {
     width: 360px;
     height: 435px;
@@ -393,6 +474,7 @@ img{
     border-radius: 6px;
     margin-top: 60px;
     margin-bottom: 60px;
+    border: groove 2px;
 }
 .recupera h1{
     margin: 0;
@@ -409,6 +491,14 @@ img{
 .recupera input{
     width: 100%;
     margin-bottom: 20px;
+}
+.recupera label{
+    padding-right: 20px;
+    margin-top: 10px;
+    float: left;
+}
+.recupera .label{
+   padding-right: 0; 
 }
 .recupera input[type="text"], input[type="password"]{
     border: none;
@@ -429,6 +519,7 @@ img{
     border-radius: 20px;
     cursor: pointer;
 }
+/*lista pedidos (medio)*/
 .lista{
     width: 80%;
     margin-top: 70px;
@@ -436,6 +527,7 @@ img{
 .lista #pedidos{
     width: 90%;
 }
+/*Livro com resumo (medio)*/
 .card{
     position: absolute;
     width: 300px;
@@ -472,7 +564,6 @@ img{
     top: 0;
     right: -5px;
     width: 5px;
-    
     background-color: white;
     transform-origin: left;
     transform: skewX(-45deg);
@@ -503,14 +594,15 @@ img{
     height: 400px;
 }
 #logotipo{
-    width: 140px;
-    height: 85px;
+    width: 100px;
+    height: 65px;
     opacity: 0.9;
     border-radius: 20px;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 10px;
     
 }
+/* Div do menu (medio)*/
 .home{
     width: 100%;
     height: 105px;
@@ -523,17 +615,21 @@ header {
     margin: 0 auto;
     text-align: center;
 }
+/*Menu medio*/
 header nav {
     width:70%;
     height: 50px;
     margin: auto;
     margin-top: -60px;
-    opacity: 0.9;
+    opacity: 0.80;
     border-radius: 4px;
     text-align: center;   
 }
 .menu_bar {
     display:none;
+}
+.btn-menu{
+    color: white;
 }
 header nav ul {
     overflow:hidden;
@@ -562,6 +658,7 @@ header nav ul li a:hover {
 
 
 @media screen and (max-width:768px) {
+/* Div do menu mobile*/
 .home{
     height: 80px;
     opacity: 0.80;
@@ -569,6 +666,7 @@ header nav ul li a:hover {
     z-index: 500; /* header fora da div home =1*/
     
 }
+/*Menu (mobile)*/
 header nav {
     width:80%;
     height:100%;
@@ -599,7 +697,6 @@ header nav ul li a{
     background: black;
     color: white;
 }
-
 .menu_bar .bt-menu {
     display:block;
     padding:20px;
@@ -612,23 +709,15 @@ header nav ul li a{
     -moz-box-sizing:border-box;
     box-sizing:border-box;
 }
-
 .menu_bar span {
     float:right;
     margin-top: -67px;
     font-size:50px;
     margin-right: 10px;
+}
+/*slide do index (mobile)*/
 
-}
-.slide{
-    width: 180px;
-    height: 200px;
-    margin-top: 40px;
-}
-.slide a li img{
-    width: 180px;
-    height: 200px;
-}
+/* desenvolvedores */
 .desen{
     width: 125px;
     height: 125px;
@@ -640,17 +729,21 @@ header nav ul li a{
     margin-top: 2px;
     height: 74px;
 }
+/*Texto acima do slide (mobile)*/
 .destaque{
     margin-top: 110px;
 }
+
 .sobre{
     margin-top: 60px;
 }
+/* Cadastro mobile */
 .registro{
     width: 80%;
     margin-top: 420px;
     margin-bottom: -240px;
 }
+/*Página dos livros (mobile)*/
 .livro .grid{
     width: 320px;
 }
@@ -660,15 +753,18 @@ header nav ul li a{
 .livro  a{
     color: blue;
 }
+/* Pesquisa livros (mobile)*/
 .busca{
     width: 150px;
 }
+/*login (mobile)*/
 .login{
     margin-top: 370px;
 }
 .login a{
     color: blue;
 }
+/* Cadastro de livros (mobile)*/
 .cadlivro{
     width: 350px;
     margin-top: 90px;
@@ -696,19 +792,44 @@ header nav ul li a{
 }
 .cadlivro select{
     width: 35%;
-    margin-left: -65%; /*185*/
+    margin-left: -65%; 
 }
+/*Lista pedidos (mobile)*/
 .lista{
     width: 80%;
     overflow: hidden;
     margin-top: 100px;
 }
+/*Altera senha (mobile)*/
 .recupera{
     margin-top: 40px;
+    margin-bottom: 60px;
 }
 .recupera a{
     color: blue;
 }
 table{
     width: 50%;
+}
+/*Pesquisa dos livros (mobile)*/
+.form_busca{
+    margin-top: 100px;
+}
+.teste{
+    width: 55%;
+}
+}
+@media screen and (max-width: 1920px){
+    .cadlivro .file{
+        margin-right: -370px;
+        width: 300px;
+    }
+    .cadlivro input.name_autor{
+        margin-left: -55%;
+        width: 45%;
+    }
+    .cadllivro select{
+        width: 45%;
+        margin-left: -55%;
+    }
 }

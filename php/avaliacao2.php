@@ -1,25 +1,27 @@
 <?php 
 session_start();
 include('conexao.php');
-if (!isset($_SESSION['usuario']) || !empty($_SESSION['usuario']) ){
+if (!isset($_SESSION['usuario'])){
 	header('location: login.php');
 	exit();
 }
 
 $estrela=$_POST['estrela'];
-$codigo=$_POST['codigo'];
-$stmt=$pdo->prepare("SELECT * FROM estoque WHERE EST_COD_LIVRO=? ");
+$codigo=$_POST['codigo']; //codigo do livro
+$votos=1;
+$stmt=$pdo->prepare("SELECT * FROM estoque WHERE EST_COD_LIVRO=?");
 $stmt->execute([$codigo]);
 $resultado=$stmt->fetchAll();
 foreach ($resultado as $value) {
-	$_SESSION['codigo']=$value['EST_ESTRELA'];
+	$estrela+=$value['EST_ESTRELA'];
+	$votos+=$value['EST_VOTOS'];
 }
+$media=$estrela/$votos;
 
-$estrela2=$_SESSION['codigo']+$estrela;
+$stmt=$pdo->prepare("UPDATE estoque SET EST_ESTRELA=?, EST_VOTOS=?, EST_MEDIA_VOTOS=? WHERE EST_COD_LIVRO=?");
+$stmt->execute([$estrela, $votos, $media, $codigo]);
 
-$stmt=$pdo->prepare("UPDATE estoque SET EST_ESTRELA=? WHERE EST_COD_LIVRO=?");
-$stmt->execute([$estrela2, $codigo]);
-unset($_SESSION['codigo']);
+
 header("location: avaliacao.php?i=".$codigo);
- 
+
  ?>

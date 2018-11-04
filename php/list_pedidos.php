@@ -1,19 +1,26 @@
-<?php 
+<?php
 session_start();
 include('conexao.php');
+if(!isset($_SESSION['usuario'])){
+	header('location: login.php');
+	exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<meta charset=UTF-8">
-    <title>Cadastro de Livros</title>
+    <title>Meus pedidos</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
-    <link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
-	<script type="text/javascript" src="../js/jquery-latest.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+	<link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
 	<script type="text/javascript" src="../js/menu.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
 </head>
 <body>
 
@@ -32,10 +39,9 @@ include('conexao.php');
 								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
 					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
-					<?php }  else {  ?>
+					<?php } else {  ?>
 					<li><a href="list_pedidos.php"><span class="icon icon-hour-glass"></span>Meus pedidos</a></li>
 					<?php } }?>
-					
 					<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 					<?php
 					if(isset($_SESSION['usuario'])){ ?>
@@ -49,56 +55,59 @@ include('conexao.php');
 			</nav>
 		</header>
 	</div>
-	
-	<div class="livro">
+
 		<center>
-			<?php
+			<div class="lista">
+				<table id="pedidos">
+					<thead>
+						<tr>
+							<td>ISBN</td>
+							<td>Data</td>
+							<td>Cod. Pedido</td>
+							<td>Nome</td>
+							<td>Matrícula</td>
+							<td>E-mail</td>
+							<td>PDF</td>
+						</tr>
+					</thead>
 
-			$pesquisar=addslashes($_GET['busca']);
-			if (isset($_GET['busca']) && empty($_GET['busca'])){
-				header('location: livros.php');
-				exit();
-			}
-			else{
-				$stmt=$pdo->prepare("SELECT * FROM livro WHERE LIVRO_NOME LIKE '%$pesquisar%'  LIMIT 5");
-				$stmt->execute();
-				$resultado=$stmt->fetchAll();
-
-				foreach ($resultado as $value) {?>
-					<br><div class="grid">
-					<?php if (isset($_SESSION['usuario'])){
-						if($_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ 
-						echo "<p><a href=delete.php?i=".$value['LIVRO_CODIGO'].">Excluir</a></p"; } }?>
-					<p>Nome: <?= $value['LIVRO_NOME'];?></p>
-					<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
-					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
-					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
-					<p><a href=pedido.php?i=<?= $value['LIVRO_CODIGO']; ?>>Solicitar pedido</a></p>
-					<?php 
-						$codigo=$value['LIVRO_CODIGO'];
-						$id=$value['LIVRO_IMAGEM'];
-						$local="../img/livros/";
-						$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
-						$stmt->execute([$id]); 
+					<tbody>
+						<?php 
+						$stmt=$pdo->prepare("SELECT * FROM pedido");
+						$stmt->execute();
 						$resultado=$stmt->fetchAll();
-						foreach ($resultado as $value) { 
-							$imagem=$local.$value['IMG_NOME']?>
-						<br><a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a><br>
-			<?php
-					}//foreach
-				} //foreach
-			} //else
-
-			?> 
+						$livro='';
+						foreach ($resultado as $value) { ?>
+							
+						<tr><?php if ($_SESSION['id']==$value['PED_USER_ID']) : $livro=$value['PED_COD_LIVRO']; ?>
+							<td><?= $value['PED_COD_LIVRO']; ?></td>
+							<td><?= $value['PED_DATA']; ?></td>
+							<td><?= $value['PED_CODIGO']; ?></td>
+						
+						<?php 
+						$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_ID=?");
+						$stmt->execute([$_SESSION['id']]);
+						$resultado=$stmt->fetchAll();
+						foreach ($resultado as $value) :  ?>
+						
+						
+							<td><?= $value['USER_NOME'];?> </td>
+							<td><?= $value['USER_MATRICULA'];?> </td>
+							<td><?= $value['USER_EMAIL']; ?></td>
+							<td><a href=comprovante.php?i=<?=$livro;?> > Baixar PDF</a></td>
+						</tr>
+						
+					<?php  endforeach; endif; ?>
+					<?php }  ?>
+					</tbody>
+				</table>
+			
+			</div>
 		</center>
-	</div>
-			<center><p><a href="livros.php" class="vol">Voltar</a></strong></p></center>
-
-
+	
 	<div class="copyright">
 	<p>©Copyright 2018</p>
 	</div>
 
-
 </body>
-</html
+</html>

@@ -15,6 +15,8 @@ include('conexao.php');
 	<script type="text/javascript" src="../js/jquery-latest.js"></script>
 	<script type="text/javascript" src="../js/menu.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="home">
@@ -27,14 +29,16 @@ include('conexao.php');
 			<nav>
 				<ul>
 					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>
 					<?php if(isset($_SESSION['usuario'])){
 								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
 					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
-					<?php } }  ?>
+					<?php }  else {  ?>
+					<li><a href="list_pedidos.php"><span class="icon icon-hour-glass"></span>Meus pedidos</a></li>
+					<?php } }?>
 					
-					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 					<?php
 					if(isset($_SESSION['usuario'])){ ?>
 					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
@@ -49,12 +53,12 @@ include('conexao.php');
 	</div>
 
 	<center>
-	<div class="livro">
-			<form method="GET" action="busca.php">
-				<label style="font-size: 20px;">Pesquisar: </label>
-				<input class="busca" type="text" name="busca" placeholder=" Digite aqui" required="">
+			<form method="GET" action="busca.php" class="form_busca">
+				<label>Pesquisar: </label>
+				<input class="busca" type="text" name="busca" placeholder=" &#x1F50E; Digite aqui" required="">
 				<input class="submit" type="submit" value="Buscar"><br>
 			</form>
+	<div class="row">
 	<?php if (isset($_SESSION['pedido'])) {?>
 		<br><span style="color: blue;">Pedido Realizado com sucesso! Apresente o PDF na biblioteca para retirar o livro.</span>
 		<?php } unset($_SESSION['pedido']);?>
@@ -66,14 +70,14 @@ include('conexao.php');
 				$stmt ->execute();
 				$resultado = $stmt->fetchAll();
 				foreach ($resultado as $value) : $codigo=$value['LIVRO_CODIGO']?>
-				<br><div class="grid">
+				<br><div class="col-md-6"><br>
 					
 					<p>Nome: <?= $value['LIVRO_NOME'];?></p>
 					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
 					<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
 					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
-					<p><a href=avaliacao.php?i=<?= $codigo;?> >Avaliar</a></p>
-					<p><a href=delete.php?i=<?= $codigo;?> >Excluir</a></p>
+					<p><a href=avaliacao.php?i=<?= $codigo;?> class=" icon icon-star-full">Avaliar</a></p>
+					<p><a href=delete.php?i=<?= $codigo;?> class="icon icon-bin">Excluir</a></p>
 
 					<?php 
 						$codigo=$value['LIVRO_CODIGO'];
@@ -84,7 +88,7 @@ include('conexao.php');
 						$resultado=$stmt->fetchAll();
 						foreach ($resultado as $value) { 
 							$imagem=$local.$value['IMG_NOME']?>
-						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a>
+						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a><br>
 
 					<?php }?>
 
@@ -98,7 +102,7 @@ include('conexao.php');
 					
 					foreach ($resultado as $value) : $codigo=$value['LIVRO_CODIGO'];?>
 
-					<br><div class="grid">
+					<br><div class="col-md-6"><br>
 						<p>Nome: <?= $value['LIVRO_NOME'];?></p>
 						<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
 						<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
@@ -116,8 +120,8 @@ include('conexao.php');
 							$resultado=$stmt->fetchAll();
 							foreach ($resultado as $value) { 
 								$imagem=$local.$value['IMG_NOME']?>
-							<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a>
-					</div><br>
+							<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a><br>
+					</div>
 				<?php } endforeach ?>
 
 			<?php } ?>

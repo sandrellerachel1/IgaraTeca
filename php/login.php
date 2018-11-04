@@ -29,22 +29,10 @@ if(isset($_SESSION['usuario'])){
 			<nav>
 				<ul>
 					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
-					<?php if(isset($_SESSION['usuario'])){
-								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
-					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
-					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
-					<?php } }  ?>
-					
-					<li><a href="#"><span class="icon icon-eye"></span>Sobre</a></li>
-					<?php
-					if(isset($_SESSION['usuario'])){ ?>
-					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
-					<li><a href="logout.php"><span class="icon icon-exit"></span>Sair</a></li>
-					<?php }else {?>
+					<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>	
+					<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 					<li><a href="registro.php"><span class="icon icon-user-plus"></span>Registrar-se</a></li>
 					<li><a href="login.php"><span class="icon icon-user"></span>Login</a></li>
-					<?php } ?>
 				</ul>
 			</nav>
 		</header>

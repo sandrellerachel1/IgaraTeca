@@ -44,14 +44,15 @@ session_start();
 		<nav>
 			<ul>
 				<li><a href="index.php"><span class="icon icon-home"></span>Início</a></li>
-				<li><a href="php/livros.php"><span class="icon icon-book"></span>Livros</a></li>
+				<li><a href="php/livros.php"><span class="icon icon-books"></span>Livros</a></li>
 				<?php if(isset($_SESSION['usuario'])){
 							if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 				<li><a href="php/cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
 				<li><a href="php/listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
-				<?php } }  ?>
-				
-				<li><a href="php/sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+				<?php }  else {  ?>
+					<li><a href="php/list_pedidos.php"><span class="icon icon-hour-glass"></span>Meus pedidos</a></li>
+					<?php } } ?>
+				<li><a href="php/sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 				<?php
 				if(isset($_SESSION['usuario'])){ ?>
 				<li><a href="php/conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
@@ -85,7 +86,23 @@ session_start();
 		echo "<script> alert('Erro! Você está logado com outro usuário. Faça o logout e tente novamente.');</script>";
 		unset($_SESSION['user_logado']);
 	}?>
+	
+	<center>
+		<div class="teste">
 
+			<div class="acervo">
+				<span class="icon icon-tablet"></span><br>
+				<label>Acervo</label>
+				<p>Pode ser acessada por computadores, tablets e smartphones</p>
+			</div>
+
+			<div class="acesso">
+				<span class="icon icon-clock"></span><br>
+				<label>Acessibilidade</label>
+				<p>Pode ser acessada a qualquer hora do dia</p>
+			</div>
+		</div>
+	</center>
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

@@ -31,14 +31,16 @@ if(!isset($_SESSION['usuario'])){
 			<nav>
 				<ul>
 					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>
 					<?php if(isset($_SESSION['usuario'])){
 								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
 					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
-					<?php } }  ?>
+					<?php } else {  ?>
+					<li><a href="list_pedidos.php"><span class="icon icon-hour-glass"></span>Meus pedidos</a></li>
+					<?php } }?>
 					
-					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 					<?php
 					if(isset($_SESSION['usuario'])){ ?>
 					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
@@ -52,7 +54,7 @@ if(!isset($_SESSION['usuario'])){
 		</header>
 	</div>
 
-	<div class="recupera">
+	<div class="recupera" style="height: 495px;">
 		<center>
 			<h1>Conta</h1>
 			<?php
@@ -62,16 +64,20 @@ if(!isset($_SESSION['usuario'])){
 				$resultado=$stmt->fetchAll();
 
 				foreach ($resultado as $value) { ?>
-				<p><?= "Login: ".$value['USER_NOME']; ?></p><br>
-				<p><?= "Matrícula: ".$value['USER_MATRICULA']; ?></p><br>
-				<p><?= "E-mail: ".$value['USER_EMAIL']; ?></p><br>
-				<p><?= "Senha: "."*****" ?></p><br>
+				<p>Login</p>
+				<input  type="text" disabled placeholder="<?= $value['USER_NOME']; ?>"><br>
+				<p>Matrícula</p>
+				<input  type="text" disabled placeholder="<?= $value['USER_MATRICULA']; ?>" ><br>
+				<p>E-mail</p>
+				<input  type="text" disabled placeholder="<?= $value['USER_EMAIL']; ?>" ><br>
+				<p>Senha</p>
+				<input  type="text" disabled placeholder="******" ><br>
 				<a href="recupera.php">Alterar senha</a><br>
 				
 			<?php } ?>
 
 		</center>
-	</div>
+	</div><br>
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

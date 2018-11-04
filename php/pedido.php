@@ -32,14 +32,16 @@ if(!isset($_SESSION['usuario'])){
 			<nav>
 				<ul>
 					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-					<li><a href="livros.php"><span class="icon icon-book"></span>Livros</a></li>
+					<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>
 					<?php if(isset($_SESSION['usuario'])){
 								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>
 					<li><a href="listped.php"><span class="icon icon-hour-glass"></span>Pedidos</a></li>			
-					<?php } }  ?>
+					<?php }  else {  ?>
+					<li><a href="list_pedidos.php"><span class="icon icon-hour-glass"></span>Meus pedidos</a></li>
+					<?php } }?>
 					
-					<li><a href="sobre.php"><span class="icon icon-eye"></span>Sobre</a></li>
+					<li><a href="sobre.php"><span class="icon icon-info"></span>Sobre</a></li>
 					<?php
 					if(isset($_SESSION['usuario'])){ ?>
 					<li><a href="conta.php"><span class="icon icon-user-tie"></span><?=$_SESSION['usuario'];?></a></li>
@@ -75,9 +77,7 @@ if(!isset($_SESSION['usuario'])){
 				<p>Prazo de vencimento: 30 dias</p><br><br>
 				<a href=confPed.php?i=<?= $value['LIVRO_CODIGO']; ?>>Concluir o pedido</a>
 			
-
-
-			<?php $_SESSION['livro']=$value['LIVRO_CODIGO']; } }?>
+				<?php $_SESSION['livro']=$value['LIVRO_CODIGO']; } }?>
 		</center>
 	</div>
 	
