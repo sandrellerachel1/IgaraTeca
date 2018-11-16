@@ -55,7 +55,7 @@ if(!isset($_SESSION['usuario'])){
 		</header>
 	</div>
 
-	<div class="login">
+	<div class="recupera">
 		<center>
 		<?php if (isset($_SESSION['pedido'])) {?>
 			<span style="color: blue;">Pedido realizado com Sucesso!</span>
@@ -66,18 +66,20 @@ if(!isset($_SESSION['usuario'])){
 		<?php
 			if(isset($_GET['i'])){
 			$i=$_GET['i'];
-			$stmt = $pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO= ? ");
+			$stmt = $pdo->prepare("SELECT * FROM LIVROS WHERE LIVRO_CODIGO= ? ");
 			$stmt ->execute([$i]);
 			$resultado = $stmt->fetchAll();	?>
 			
 			<?php foreach ($resultado as $value) { ?> 
-				<h2>Livro: <?= $value['LIVRO_NOME']; ?> </h2><br>
-				<p>Tipo: <?= $value['LIVRO_TIPO']; ?></p>
-				<p>Código: <?= $value['LIVRO_CODIGO']; ?></p>
-				<p>Prazo de vencimento: 30 dias</p><br><br>
+				<h2><?= $value['LIVRO_NOME']; ?> </h2>
+				<p>Tipo:</p>
+				<input type="text" disabled placeholder="<?= $value['LIVRO_TIPO']; ?>"><br>
+				<p>ISBN: </p>
+				<input type="text" disabled placeholder="<?= $value['LIVRO_CODIGO']; ?>">
+				<p>Prazo de vencimento: </p>
+				<input type="text" disabled placeholder="<?= $value['LIVRO_PRAZO']; ?> dias"><br><br>
 				<a href=confPed.php?i=<?= $value['LIVRO_CODIGO']; ?>>Concluir o pedido</a>
-			
-				<?php $_SESSION['livro']=$value['LIVRO_CODIGO']; } }?>
+				<?php } }?>
 		</center>
 	</div>
 	

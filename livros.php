@@ -66,7 +66,7 @@ include('conexao.php');
 		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
 
 			<?php   
-				$stmt = $pdo->prepare("SELECT * FROM LIVROS LIMIT 8");
+				$stmt = $pdo->prepare("SELECT * FROM livro LIMIT 8");
 				$stmt ->execute();
 				$resultado = $stmt->fetchAll();
 				foreach ($resultado as $value) : $codigo=$value['LIVRO_CODIGO']?>
@@ -83,7 +83,7 @@ include('conexao.php');
 						$codigo=$value['LIVRO_CODIGO'];
 						$id=$value['LIVRO_IMAGEM'];
 						$local="../img/livros/";
-						$stmt=$pdo->prepare("SELECT * FROM IMAGENS WHERE IMG_ID=?");
+						$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
 						$stmt->execute([$id]); 
 						$resultado=$stmt->fetchAll();
 						foreach ($resultado as $value) { 
@@ -96,7 +96,7 @@ include('conexao.php');
 			<?php endforeach ?>
 			<?php } else {?>
 				<?php   
-					$stmt = $pdo->prepare("SELECT * FROM LIVROS LIMIT 8");
+					$stmt = $pdo->prepare("SELECT * FROM livro LIMIT 8");
 					$stmt ->execute();
 					$resultado = $stmt->fetchAll();
 					
@@ -115,7 +115,7 @@ include('conexao.php');
 							$codigo=$value['LIVRO_CODIGO'];
 							$id=$value['LIVRO_IMAGEM'];
 							$local="../img/livros/";
-							$stmt=$pdo->prepare("SELECT * FROM IMAGENS WHERE IMG_ID=?");
+							$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
 							$stmt->execute([$id]); 
 							$resultado=$stmt->fetchAll();
 							foreach ($resultado as $value) { 

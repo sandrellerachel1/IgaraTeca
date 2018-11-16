@@ -15,7 +15,7 @@ $livro=$_GET['i'];
 if(isset($_GET['i'])){ 
 	if(!empty($livro)){
 		//colocando dados do usuário para o pdf
-		$stmt=$pdo->prepare("SELECT * FROM pedido WHERE PED_USER_ID= ? ");
+		$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID= ? ");
 		$stmt->execute([$id]);
 		$html='';
 		$resultado=$stmt->fetchAll();
@@ -23,7 +23,7 @@ if(isset($_GET['i'])){
 				$html.= "<h3 style=\"color: blue; margin-top: 20px; margin-bottom: 50px; font-weight: bold;\">Cod. Pedido: ".$value['PED_CODIGO']."</h3><hr>";
 			}
 
-		$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_ID= ? ");
+		$stmt=$pdo->prepare("SELECT * FROM USUARIOS WHERE USER_ID= ? ");
 		$stmt->execute([$id]);
 		$resultado=$stmt->fetchAll();
 		foreach ($resultado as $value) {
@@ -34,7 +34,7 @@ if(isset($_GET['i'])){
 
 
 		//colocando dados do livro solicitado para o pdf
-		$stmt=$pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO= ? ");
+		$stmt=$pdo->prepare("SELECT * FROM LIVROS WHERE LIVRO_CODIGO= ? ");
 		$stmt->execute([$livro]);
 		$resultado=$stmt->fetchAll();
 		foreach ($resultado as $value) {
@@ -45,7 +45,7 @@ if(isset($_GET['i'])){
 		}
 
 		//colocando os dados do pedido no pdf
-		$stmt=$pdo->prepare("SELECT * FROM pedido WHERE PED_USER_ID= ? ");
+		$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID= ? ");
 		$stmt->execute([$id]);
 		$resultado=$stmt->fetchAll();
 			foreach ($resultado as $value){

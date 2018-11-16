@@ -71,9 +71,19 @@ include('conexao.php');
 				<option value="romance">Romance</option>
 				<option value="didatico">Didático</option>
 			</select>
-			<p class="file">Selecionar imagem: <input type="file" name="arquivo" required=""></p><br>
-			<p>ISBN do livro:</p>
-			<input type="text" name="codigo" placeholder="ISBN do livro" required=""><br>
+			<p class="file">Selecionar imagem: <input type="file" name="arquivo" required=""></p>
+
+			<div class="container">
+				<p class="isbn">ISBN do livro:<br>
+					<input type="text" name="codigo" placeholder="ISBN do livro" required=""></p>
+				<p class="quantidade">Quantidade:<br>
+					<input type="number" name="quantidade" min="1">
+				</p>
+				<p class="quantidade">Prazo:<br>
+					<input type="number" name="prazo" min="1">
+				</p>
+			</div>
+
 			<p>Resumo do livro:</p><br>
 			<textarea name="resumo" cols="39" rows="10" placeholder=" Resumo (Máximo 255 caracteres)"></textarea><br><br>
 			<input type="submit" value="Cadastrar">

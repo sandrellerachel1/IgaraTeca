@@ -54,14 +54,14 @@ include('conexao.php');
 	
 		<?php
 			$dado=$_GET['i'];
-			$stmt=$pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO=?"); 
+			$stmt=$pdo->prepare("SELECT * FROM LIVROS WHERE LIVRO_CODIGO=?"); 
 			$stmt->execute([$dado]);
 			$resultado = $stmt->fetchAll();	?>
 			
 			<?php foreach ($resultado as $value) { $nome=$value['LIVRO_NOME']; $resumo=$value['LIVRO_RESUMO'];?>
 			
 			<?php
-			$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=? ");
+			$stmt=$pdo->prepare("SELECT * FROM IMAGENS WHERE IMG_ID=? ");
 			$stmt->execute([$value['LIVRO_IMAGEM']]);
 			$resultado=$stmt->fetchAll();
 			foreach ($resultado as $value) {

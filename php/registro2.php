@@ -18,7 +18,7 @@ include('conexao.php');
 	$matricula=addslashes($_POST['matricula']);
 
 	//Verifica se o usuario ou email já existe
-	$stmt=$pdo->prepare("SELECT * FROM Usuario");
+	$stmt=$pdo->prepare("SELECT * FROM USUARIOS");
 	$stmt ->execute();
 	$verifica=$stmt->fetchAll();
 	
@@ -47,7 +47,7 @@ include('conexao.php');
 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$_SESSION['sucesso']=1;
 
-	$stmt=$pdo->prepare("INSERT INTO Usuario SET USER_NOME= ?, USER_MATRICULA=?, USER_SENHA= ?, USER_EMAIL= ? ");
+	$stmt=$pdo->prepare("INSERT INTO USUARIOS SET USER_NOME= ?, USER_MATRICULA=?, USER_SENHA= ?, USER_EMAIL= ? ");
 	$stmt->execute([$usuario, $matricula, $senha, $email]);
 	
 	//Envio de e-mail para confirmar o usuário 

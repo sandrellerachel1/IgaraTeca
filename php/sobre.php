@@ -25,7 +25,7 @@ session_start();
 			<nav>
 				<ul>
 					<li><a href="../index.php"><span class="icon icon-home"></span>Início</a></li>
-					<li><a href="livros.php"><span class="icon icon-boosk"></span>Livros</a></li>
+					<li><a href="livros.php"><span class="icon icon-books"></span>Livros</a></li>
 					<?php if(isset($_SESSION['usuario'])){
 								if ( $_SESSION['usuario']=='Teste' || $_SESSION['usuario']=='igarateca'){ ?>
 					<li><a href="cadLivros.php"><span class="icon icon-book"></span>Cadastrar Livros</a></li>

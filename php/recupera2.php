@@ -6,13 +6,13 @@ $senha=md5(addslashes($_POST['senha']));
 $senha2=md5(addslashes($_POST['novasenha']));
 $senha3=md5(addslashes($_POST['novasenha2']));
 
-$stmt=$pdo->prepare('SELECT * FROM Usuario WHERE USER_ID=?');
+$stmt=$pdo->prepare('SELECT * FROM USUARIOS WHERE USER_ID=?');
 $stmt->execute([$usuario]);
 $resultado=$stmt->fetchAll();
 
 foreach ($resultado as $value) {
 	if ($senha==$value['USER_SENHA'] && $_POST['novasenha']==$_POST['novasenha2']){
-		$stmt=$pdo->prepare('UPDATE Usuario SET USER_SENHA=? WHERE USER_ID=?');
+		$stmt=$pdo->prepare('UPDATE USUARIOS SET USER_SENHA=? WHERE USER_ID=?');
 		$stmt->execute([$senha2, $usuario]);
 		$_SESSION['altera']=1;
 		header('location: recupera.php');

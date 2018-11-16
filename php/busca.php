@@ -60,7 +60,7 @@ include('conexao.php');
 				exit();
 			}
 			else{
-				$stmt=$pdo->prepare("SELECT * FROM livro WHERE LIVRO_NOME LIKE '%$pesquisar%'  LIMIT 5");
+				$stmt=$pdo->prepare("SELECT * FROM LIVROS WHERE LIVRO_NOME LIKE '%$pesquisar%'  LIMIT 5");
 				$stmt->execute();
 				$resultado=$stmt->fetchAll();
 
@@ -78,7 +78,7 @@ include('conexao.php');
 						$codigo=$value['LIVRO_CODIGO'];
 						$id=$value['LIVRO_IMAGEM'];
 						$local="../img/livros/";
-						$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
+						$stmt=$pdo->prepare("SELECT * FROM IMAGENS WHERE IMG_ID=?");
 						$stmt->execute([$id]); 
 						$resultado=$stmt->fetchAll();
 						foreach ($resultado as $value) { 

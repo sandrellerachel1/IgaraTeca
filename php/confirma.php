@@ -44,7 +44,7 @@ if (isset($_SESSION['usuario'])) {
 		<center>
 			<p><?php 
 				$i=$_GET['i'];
-				$stmt = $pdo->prepare("SELECT * FROM Usuario");
+				$stmt = $pdo->prepare("SELECT * FROM USUARIOS");
 				$stmt ->execute();
 				$resultado = $stmt->fetchAll();	
 				
@@ -55,7 +55,8 @@ if (isset($_SESSION['usuario'])) {
 					}
 				}
 				if(!empty($i) && md5($value['USER_ID'])==$i){
-					$pdo->query("UPDATE Usuario SET USER_STATUS='1' WHERE MD5(USER_ID) = '$i'");
+					$stmt=$pdo->prepare("UPDATE USUARIOS SET USER_STATUS=? WHERE MD5(USER_ID) = ?");
+					$stmt->execute([1, $i]);
 					echo "Cadastro confirmado com sucesso!";
 				}
 				?> 

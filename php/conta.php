@@ -59,7 +59,7 @@ if(!isset($_SESSION['usuario'])){
 			<h1>Conta</h1>
 			<?php
 				$usuario=$_SESSION['usuario'];
-				$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_NOME=? ");
+				$stmt=$pdo->prepare("SELECT * FROM USUARIOS WHERE USER_NOME=? ");
 				$stmt ->execute([$usuario]);
 				$resultado=$stmt->fetchAll();
 

@@ -18,6 +18,7 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
 	<script type="text/javascript" src="../js/jquery-latest.js"></script>
 	<script type="text/javascript" src="../js/menu.js"></script>
+	<script type="text/javascript" src="../js/avaliations.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
@@ -55,9 +56,6 @@ if (!isset($_SESSION['usuario'])) {
 		</header>
 	</div>
 
-	<center>
-	<div class="livro" style="margin-top: 60px;">
-
 	<?php
 		if(isset($_SESSION['usuario'])){
 			if($_SESSION['usuario']=='Teste'){ 
@@ -66,63 +64,66 @@ if (!isset($_SESSION['usuario'])) {
 		}
 	}
 	?>
+	<center>
+	<div class="livro" style="margin-top: 60px;">
 
-
+			
 			<?php
 				$get=$_GET['i'];
-				$stmt = $pdo->prepare("SELECT * FROM livro WHERE LIVRO_CODIGO=?");
+				$stmt = $pdo->prepare("SELECT * FROM LIVROS WHERE LIVRO_CODIGO=?");
 				$stmt ->execute([$get]);
 				$resultado = $stmt->fetchAll();
-				foreach ($resultado as $value) : $codigo=$value['LIVRO_CODIGO']?>
-				<br><div class="grid" ">
+				foreach ($resultado as $value) : 
+					$codigo=$value['LIVRO_CODIGO'];
+						$id=$value['LIVRO_IMAGEM'];?>
+				<br><div class="grid" "><center>
 					
 					<p>Nome: <?= $value['LIVRO_NOME'];?></p>
 					<p>Autor: <?= $value['LIVRO_AUTOR'];?></p>
 					<p>Tipo: <?=$value['LIVRO_TIPO']; ?></p>
 					<p>ISBN: <?=$value['LIVRO_CODIGO']; ?></p>
-					<p><form method="POST" action="avaliacao2.php" enctype="multipart/form-data">
-							<div class="estrelas" style="border: none; margin-right: -160px;">
-								<input type="radio" id="vazio" name="estrela" value="" checked>
+					<?php 
+					$stmt=$pdo->prepare("SELECT * FROM AVALIACOES WHERE AVL_COD_LIVRO=?");
+					$stmt->execute([$get]);
+					$resultado=$stmt->fetchAll();
+					foreach($resultado as $value):?>
+					<span class="ratingAverage" data-average="<?= $value['AVL_MEDIA_VOTOS'];?>"></span>
+					<span class="article" data-id="<?= $get;?>"></span>
 
-								<label for="estrela_um"><i class="fa"></i></label>
-								<input type="radio" id="estrela_um" name="estrela" value="1">
+					<br><div class="barra">
+						<span class="bg"></span>
+						<span class="stars">
+							<?php for($i=1; $i<=5; $i++):?>
 
-								<label for="estrela_dois"><i class="fa"></i></label>
-								<input type="radio" id="estrela_dois" name="estrela" value="2">
-
-								<label for="estrela_tres"><i class="fa"></i></label>
-								<input type="radio" id="estrela_tres" name="estrela" value="3">
-
-								<label for="estrela_quatro"><i class="fa"></i></label>
-								<input type="radio" id="estrela_quatro" name="estrela" value="4">
-
-								<label for="estrela_cinco"><i class="fa"></i></label>
-								<input type="radio" id="estrela_cinco" name="estrela" value="5"><br>
-
-								<input type="submit" value="Avaliar">
-								<input type="hidden" name="codigo" value="<?= $codigo;?>" >
-							</div>
-									
-								</form></p>
-
+							<span class="star" data-vote="<?= $i;?>">
+								<span class="starAbsolute"></span>
+							</span>
+							<?php 
+								endfor;?>
+						</span>
+					</div>
+					<br><p class="votos"><span><?= $value['AVL_QTD_PESSOAS'];?></span> votos</p>
+					<?php
+						endforeach;
+					?>
+					</div>
 
 					<?php 
-						$codigo=$value['LIVRO_CODIGO'];
-						$id=$value['LIVRO_IMAGEM'];
+						
 						$local="../img/livros/";
-						$stmt=$pdo->prepare("SELECT * FROM imagem WHERE IMG_ID=?");
+						$stmt=$pdo->prepare("SELECT * FROM IMAGENS WHERE IMG_ID=?");
 						$stmt->execute([$id]); 
 						$resultado=$stmt->fetchAll();
 						foreach ($resultado as $value) { 
 							$imagem=$local.$value['IMG_NOME']?>
-						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>" style="margin-top: -175px;" ></a>
+						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>" style="margin-top: -350px; " ></a>
 						
 					<?php }?>
 
 				</div>
 			<?php endforeach ?>
-
-	</div></center>
+	</div>
+	</center>
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

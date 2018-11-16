@@ -4,7 +4,7 @@ include('conexao.php');
 
 	$usuario= addslashes($_POST['usuario']);
 	$senha=md5(addslashes($_POST['senha']));
-	$stmt=$pdo->prepare("SELECT * FROM Usuario ");
+	$stmt=$pdo->prepare("SELECT * FROM USUARIOS ");
 	$stmt ->execute();
 	$resultado = $stmt->fetchAll();
 					 

@@ -70,10 +70,24 @@ if(isset($_SESSION['usuario'])){
 				<input type="password" name="senha2" placeholder="Confirme a senha" required="">
 				<p>E-mail</p>
 				<input type="text" name="email" required="" placeholder="Seu e-mail" required="">
-				<input type="submit" value="Enviar">
+				<input id="submit" type="submit" value="Enviar">
 			</form>
 		</center>
 	</div>
+
+	<!--<script>
+		$(document).ready(myFunction);
+		var botao=document.getElementById('submit');
+		function myFunction(){
+			var txt;
+		    var r = confirm("Tem certeza que seu e-mail foi digitado corretamente ?");
+		    if (r == true) {
+		        return true;
+		    } else {
+		        return false;
+		    }
+		};
+	</script> -->
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

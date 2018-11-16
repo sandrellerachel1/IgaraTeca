@@ -84,8 +84,9 @@ if(!isset($_SESSION['usuario']) ){
 					</tr>
 				</thead>
 				<tbody id="tbody">
+				
 					<?php 
-					$stmt=$pdo->prepare("SELECT * FROM pedido");
+					$stmt=$pdo->prepare("SELECT * FROM PEDIDOS");
 					$stmt->execute();
 					$resultado=$stmt->fetchAll();
 					foreach ($resultado as $value) { ?>
@@ -99,7 +100,7 @@ if(!isset($_SESSION['usuario']) ){
 					
 				
 					<?php 
-					$stmt=$pdo->prepare("SELECT * FROM Usuario WHERE USER_ID=?");
+					$stmt=$pdo->prepare("SELECT * FROM USUARIOS WHERE USER_ID=?");
 					$stmt->execute([$_SESSION['id_pedido']]);
 					$resultado=$stmt->fetchAll();
 					foreach ($resultado as $value) {  ?>
@@ -120,15 +121,15 @@ if(!isset($_SESSION['usuario']) ){
 		var tbody=document.getElementById('tbody');
 		document.getElementById("pesquisa").addEventListener("keyup", function(){
 		var busca=document.getElementById("pesquisa").value.toLowerCase();
+			
 			achou=false;
 			var tr=tbody.childNodes;
 			var td=tr.childNodes;
-			var value=td.childNodes[0].nodeValue.toLowerCase();
+			var value=td.childNodes.nodeValue.toLowerCase();
 			if(busca>=0){
 				achou=true;
 
 			}
-			
 			if(achou){
 				tr.style.display="table-row";
 			}
