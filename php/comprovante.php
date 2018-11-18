@@ -2,21 +2,21 @@
 session_start();
 include('conexao.php');
 use Dompdf\Dompdf; //referenciar o DomPDF com namespace
-require_once 'dompdf/autoload.inc.php';
+require_once '../dompdf/autoload.inc.php';
 if (!isset($_SESSION['usuario'])) {
 	header('location: login.php');
 	exit();
 }
-
 $id=$_SESSION['id'];
 $usuario=$_SESSION['usuario'];
 $livro=$_GET['i'];
+$data=$_GET['j'];
 
 if(isset($_GET['i'])){ 
 	if(!empty($livro)){
 		//colocando dados do usuário para o pdf
-		$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID= ? ");
-		$stmt->execute([$id]);
+		$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID= ? AND md5(PED_DATA)= ?");
+		$stmt->execute([$id, $data]);
 		$html='';
 		$resultado=$stmt->fetchAll();
 			foreach ($resultado as $value){
@@ -45,8 +45,8 @@ if(isset($_GET['i'])){
 		}
 
 		//colocando os dados do pedido no pdf
-		$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID= ? ");
-		$stmt->execute([$id]);
+		$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID= ? AND md5(PED_DATA)= ?");
+		$stmt->execute([$id, $data]);
 		$resultado=$stmt->fetchAll();
 			foreach ($resultado as $value){
 				$html.= "<p>Data de solicitação: ".$value['PED_DATA']."</p>";
@@ -65,9 +65,13 @@ if(isset($_GET['i'])){
 			array(
 				"Attachment"=>true
 			)
-			);
-
-		 header('location: livros.php');
+			);?>
+		<script type="text/javascript">
+			setTimeout(function() {
+		    	window.location.href = "list_pedidos.php";
+			}, 1000);
+		</script>
+		<?php
 	}
 }
 else{

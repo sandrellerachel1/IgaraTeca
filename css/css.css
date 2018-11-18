@@ -333,7 +333,7 @@ div.slide section.botao a:hover{
 .acesso p{
     
 }
-
+/*rodapé*/
 .copyright {
 	color: white;
 	height: 24px;
@@ -352,6 +352,17 @@ div.slide section.botao a:hover{
 img{
 	border-radius: 4px;
 }
+table tr td{
+    padding: 10px;
+    border-radius: 4px;
+}
+table tr:nth-child(2n+1){
+    background-color: #D8D8D8;
+}
+table tr:nth-child(2n){
+   background-color: #babaca;
+}
+/*div de login*/
 .login{
     width: 360px;
     height: 410px;

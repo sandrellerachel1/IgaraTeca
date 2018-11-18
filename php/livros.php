@@ -59,9 +59,6 @@ include('conexao.php');
 				<input class="submit" type="submit" value="Buscar"><br>
 			</form>
 	<div class="row">
-	<?php if (isset($_SESSION['pedido'])) {?>
-		<br><span style="color: blue;">Pedido Realizado com sucesso! Apresente o PDF na biblioteca para retirar o livro.</span>
-		<?php } unset($_SESSION['pedido']);?>
 	<?php
 		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
 

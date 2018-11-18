@@ -76,7 +76,7 @@ if(!isset($_SESSION['usuario'])){
 				<input type="text" disabled placeholder="<?= $value['LIVRO_TIPO']; ?>"><br>
 				<p>ISBN: </p>
 				<input type="text" disabled placeholder="<?= $value['LIVRO_CODIGO']; ?>">
-				<p>Prazo de vencimento: </p>
+				<p>Prazo para entrega: </p>
 				<input type="text" disabled placeholder="<?= $value['LIVRO_PRAZO']; ?> dias"><br><br>
 				<a href=confPed.php?i=<?= $value['LIVRO_CODIGO']; ?>>Concluir o pedido</a>
 				<?php } }?>

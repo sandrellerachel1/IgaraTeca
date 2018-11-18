@@ -57,13 +57,15 @@ if(!isset($_SESSION['usuario'])){
 
 		<center>
 			<h2 class="h2">Meus pedidos</h2>
-
-			<form id="pesquisa" action="" method="POST" enctype="multipart/form-data">
+			<?php if(isset($_SESSION['sucesso_pedido'])){?>
+				<script>alert('Solicitação Realizada com sucesso! Apresente o comprovante (PDF) na biblioteca para retirar o livro.');
+				</script>
+			<?php } unset($_SESSION['sucesso_pedido']);?>
+			<br><form id="pesquisa" action="" method="POST" enctype="multipart/form-data">
 			<input type="text"  name="busca" id="input" autocomplete="off">
-			<input type="submit">
 			</form>
 
-			<div>
+			<div><br>
 				<table id="pedidos">
 					<thead>
 						<tr>
@@ -83,7 +85,10 @@ if(!isset($_SESSION['usuario'])){
 						$stmt->execute();
 						$resultado=$stmt->fetchAll();
 						$livro='';
-						foreach ($resultado as $value) { $livro=$value['PED_COD_LIVRO'];?>
+						foreach ($resultado as $value) { 
+							$livro=$value['PED_COD_LIVRO']; 
+							$data=$value['PED_DATA'];
+							?>
 							
 							<tr>
 								<td><?= $value['PED_COD_LIVRO']; ?></td>
@@ -99,7 +104,7 @@ if(!isset($_SESSION['usuario'])){
 								<td><?= $value['USER_NOME'];?> </td>
 								<td><?= $value['USER_MATRICULA'];?> </td>
 								<td><?= $value['USER_EMAIL']; ?></td>
-								<td><a href=comprovante.php?i=<?=$livro;?> > Baixar PDF</a></td>
+								<td><a href="comprovante.php?i=<?=$livro;?>&j=<?=md5($data);?>" class="icon icon-download"> Baixar PDF</a></td>
 								
 							</tr>
 						
