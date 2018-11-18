@@ -20,7 +20,7 @@ include('conexao.php');
 </head>
 <body>
 	<div class="home">
-		<a href="../index.php"><img src="../img/logo3.png" id="logotipo" class="animated bounceInLeft"></a>
+		<a href="../index.php" class="pop"><img src="../img/logo3.png" id="logotipo" class="animated bounceInLeft"></a>
 			<header>
 			<div class="menu_bar">
 				<a href="#" class="btn-menu"><span class="icon icon-menu"></span></a>

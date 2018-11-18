@@ -43,9 +43,9 @@ if(isset($_SESSION['usuario'])){
 			<form method="POST" action="login2.php">
 				<img src="../img/avatar1.png" class="avatar">
 	        	<h1>Login</h1>
-	        	<?php if (isset($_SESSION['sucesso'])) {?>
+	        	<?php if (isset($_SESSION['cadastro_sucesso'])) {?>
 	        		<span style="color: blue; font-size: 15px;">Usuário cadastrado com sucesso! Vá até seu e-mail para validar seu usuário.</span>
-					<?php unset($_SESSION['sucesso']); ?>
+					<?php unset($_SESSION['cadastro_sucesso']); ?>
 				<?php } elseif (isset($_SESSION['naoexiste'])) { ?>
 					<span style="color: red;">Usuário não existe!</span>
 					<?php unset($_SESSION['naoexiste']);?>
