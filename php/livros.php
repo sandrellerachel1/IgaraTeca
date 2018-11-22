@@ -60,8 +60,8 @@ include('conexao.php');
 			</form>
 	<div class="row">
 	<?php
-		if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
-
+	if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
+	
 			<?php   
 				$stmt = $pdo->prepare("SELECT * FROM LIVROS LIMIT 8");
 				$stmt ->execute();
@@ -87,10 +87,9 @@ include('conexao.php');
 							$imagem=$local.$value['IMG_NOME']?>
 						<a href="view.php?i=<?= $codigo; ?>"><img src="<?= $imagem; ?>"></a><br>
 
-					<?php }?>
-
 				</div>
-			<?php endforeach ?>
+			<?php } endforeach;?>
+			
 			<?php } else {?>
 				<?php   
 					$stmt = $pdo->prepare("SELECT * FROM LIVROS LIMIT 8");

@@ -62,7 +62,7 @@ if(!isset($_SESSION['usuario'])){
 				</script>
 			<?php } unset($_SESSION['sucesso_pedido']);?>
 			<br><form id="pesquisa" action="" method="POST" enctype="multipart/form-data">
-			<input type="text"  name="busca" id="input" autocomplete="off">
+			<input class="busca" type="text"  name="busca" id="input" autocomplete="off" placeholder=" &#x1F50E; Digite aqui">
 			</form>
 
 			<div><br>
@@ -81,8 +81,8 @@ if(!isset($_SESSION['usuario'])){
 
 					<tbody id=tbody>
 						<?php 
-						$stmt=$pdo->prepare("SELECT * FROM PEDIDOS");
-						$stmt->execute();
+						$stmt=$pdo->prepare("SELECT * FROM PEDIDOS WHERE PED_USER_ID=?");
+						$stmt->execute([$_SESSION['id']]);
 						$resultado=$stmt->fetchAll();
 						$livro='';
 						foreach ($resultado as $value) { 
@@ -120,16 +120,16 @@ if(!isset($_SESSION['usuario'])){
 				document.getElementById("pesquisa").addEventListener("keyup", function(){
 					var busca=document.getElementById("input").value.toLowerCase();
 					var pedido=document.getElementById("tbody").innerHTML;
-					if(busca>=1){
-						
+					if(busca.length>=0){
+						console.log(busca.length);
 						$.post('pesquisa.php', { pedido:busca }, function(retorna){
 							$("#tbody").html(retorna);
 						});
 					}
-					else{
+					/*else{
+
 						$("#tbody").html(pedido);
-					console.log(pedido);
-					}
+					}*/
 					
 				});
 			});

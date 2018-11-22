@@ -485,7 +485,14 @@ table tr:nth-child(2n){
     font-size: 20px;
 }
 /*Exibição dos livros (medio)*/
- div.col-md-6{
+.row{
+    width: 80%;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 40px;
+    /*display: flex;*/
+}
+div.col-md-6{
     width: 250px;
     height: 470px;
     border: solid 1px #6E6E6E;
@@ -495,19 +502,108 @@ table tr:nth-child(2n){
     margin-bottom: 10px;
     border-radius: 4px; 
 }
-.row{
-    width: 80%;
-    margin-bottom: 30px;
-    text-align: center;
-    margin-top: 40px;
-    /*display: flex;*/
-}
 .row .col-md-6 img{
     width: 200px;
     height: 220px;
 }
 .row .col-md-6 p{
     margin-top: -7px;
+}
+/*
+div.book{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 325px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius: 4px; 
+}
+.book .img{
+    border: 4px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+.book img:before{
+    content: '';
+    position: absolute;
+    bottom: -108px;
+    left: 0;
+    width: 300px;
+    height: 325px
+    background: linear-gradient(0deg, #000 50%, transparent);
+    transition: 0.5s;
+    z-index: 1;
+}
+.book:hover .info{
+    bottom: 0;
+}
+.book:hover .img:before{
+    bottom: 0;
+}
+.book:hover .img img{
+    filter: blur(5px);
+    width: 300px;
+    height: 325px;
+}
+.book img{
+    width: 300px;
+    height: 325px;
+}
+.info{
+    position: absolute;
+    padding: 20px;
+    width: 100%;
+    height: 80%;
+    bottom: -108px;
+    left: 0;
+    box-sizing: border-box;
+    transition: 0.5s;
+    z-index: 2;
+}
+.info h2{
+    color: white;
+    font-size: 20px;
+    padding: 0;
+    left: 0;
+    margin: 0;
+}
+.info h2 span{
+    font-size: 15px;
+}
+.info p{
+    color: white;
+}
+.stars{
+    position: relative;
+    padding: 5px 0;
+}
+.stars .fal{
+    color: yellow;
+    margin-right: 2px;
+    font-size: 15px;
+}
+.btn{
+    margin-top: 5px;
+    position: relative;
+    margin-left: -14px;
+}
+.btn span{
+    padding: 2px 5px;
+    margin-right: 2px;
+    display: inline-block;
+    border-radius: 4px;
+    color: white;
+}
+.btn span.solicitar{
+    background: #FA58D0;
+}
+.btn span.avaliar{
+    background: #7401DF;
 }
 /* Alterar senha (medio)*/
 .recupera {
@@ -706,6 +802,175 @@ header nav ul li a:hover {
     border-radius: 4px;
 }
 
+.users_online{
+    position: absolute;
+    top: 0;
+   
+    right: 0;
+    width: 220px;
+    height: 100%;
+    background: linear-gradient(to right, #ccc, #fff 30%);
+    border-left: 1px solid #999;
+}
+.users_online ul{
+    list-style: none;
+}
+.users_online ul li{
+    float: left;
+    width: 95%;
+    border: 1px solid transparent;
+    padding: 5px;
+    margin-left: -1;
+    border-right: 0;
+    position: relative;
+}
+.users_online ul li:hover{
+    border-color: #999;
+    background: linear-gradient(to right, #ccc, #fff 60%);
+}
+.users_online ul li a{
+    float: left;
+    margin-left: 10px;
+    line-height: 40px;
+    color: #666;
+    text-decoration: none;
+}
+.imgSmall{
+    float: left;
+    width: 44px;
+    height: 44px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.imgSmall img{
+    width: 100%;
+    height: 100%;
+}
+.status{
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: #666;
+}
+.status.off{
+    background: #ccc;
+}
+.status.on{
+    background: #090;
+}
+.chats{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 82%;
+}
+.window{
+    float: left;
+    width: 280px;
+    margin-left: 5px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.window .header_window{
+    float: left;
+    background: #00ACE6;
+    padding: 5px;
+    width: 270px;
+    position: relative;
+}
+.window .header_window .close{
+    text-decoration: none;
+    float: left;
+    color: white;
+    font: 16px Tahoma, arial;
+    padding: 0 10px 0 0;
+}
+.window .header_window .name{
+    float: left;
+    font: 16px Tahoma, arial;
+    color: white;
+}
+.window .body{
+    float: left;
+    width: 100%;
+}
+.window .body .mensagens{
+    float: left;
+    width: 100%;
+    background: #ebebeb;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    height: 230px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.window .body .send_message{
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.window .body .send_message input{
+    float: left;
+    width: 100%;
+    padding: 3px;
+    background: white;
+    border: 1px solid #999;
+    outline: none;  
+}
+.mensagens ul{
+    float: left;
+    width: 100%;
+    list-style: none;
+    margin-top: 5px;
+}
+.mensagens ul li{
+    float: right;
+    width: 80%;
+    background: linear-gradient(to bottom, #fff, #ccc 130%);
+    border: 1px solid #999;
+    border-radius: 4px;
+    position: relative;
+    padding: 7px;
+    margin-bottom: 7px; 
+}
+.mensagens ul li .imgSmall{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: -35px;
+    margin-top: -5px;
+}
+.mensagens ul li p{
+    font: 16px Tahoma, arial;
+    color: #666;
+}
+.mensagens ul li.eu{
+    float: left;
+    background: #a4e9ff;
+
+}
+.mensagens ul li{
+    margin-left: 5px;
+}
+.mensagens::-webkit-scrollbar{
+    width: 3px;
+}
+.mensagens::-webkit-scrollbar-track{
+    background-color: #666;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;     
+}
+.mensagens::-webkit-scrollbar-thumb{
+    background-color: #666;
+}
+.mensagens::-webkit-scrollbar-thumb:hover{
+    background-color: #069;
+}
 
 @media screen and (max-width:768px) {
 /* Div do menu mobile*/
@@ -713,7 +978,7 @@ header nav ul li a:hover {
     height: 80px;
     opacity: 0.80;
     position: fixed;
-    z-index: 500; /* header fora da div home =1*/
+    z-index: 500;
     
 }
 /*Menu (mobile)*/
