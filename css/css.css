@@ -882,6 +882,7 @@ header nav ul li a:hover {
     padding: 5px;
     width: 270px;
     position: relative;
+    cursor: pointer;
 }
 .window .header_window .close{
     text-decoration: none;
