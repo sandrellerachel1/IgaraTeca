@@ -1,3 +1,11 @@
+<?php
+session_start();
+include('conexao.php');
+if (!isset($_SESSION['usuario'])) {
+	header('location: login.php');
+	exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,13 +19,18 @@
 <body>
 	<aside class="users_online">
 		<ul>
-		<?php for ($i=1; $i<=8; $i++):?>
-			<li id="5">
+		<?php
+			$stmt=$pdo->prepare("SELECT * FROM USUARIOS WHERE USER_ID!=?");
+			$stmt->execute([$_SESSION['id']]);
+			$resultado=$stmt->fetchAll();
+			foreach ($resultado as $value) :
+		?>
+			<li id="<?=$value['USER_ID'];?>">
 				<div class="imgSmall"><img src="../img/avatar1.png"/></div>
-				<a href="#" id="3:5" class="comecar">João Souza</a>
-				<span id="5" class="status on"></span>
+				<a href="#" id="<?= $_SESSION['id'].':'.$value['USER_ID'];?>" class="comecar"><?= $value['USER_NOME'];?></a>
+				<span id="<?=$value['USER_ID'];?>" class="status off"></span>
 			</li>
-		<?php endfor; ?>
+		<?php endforeach; ?>
 	</ul>
 	</aside>
 
