@@ -70,7 +70,7 @@ if(!isset($_SESSION['usuario'])){
 			$stmt ->execute([$i]);
 			$resultado = $stmt->fetchAll();	?>
 			
-			<?php foreach ($resultado as $value) { ?> 
+			<?php foreach ($resultado as $value) : ?> 
 				<h2><?= $value['LIVRO_NOME']; ?> </h2>
 				<p>Tipo:</p>
 				<input type="text" disabled placeholder="<?= $value['LIVRO_TIPO']; ?>"><br>
@@ -78,8 +78,8 @@ if(!isset($_SESSION['usuario'])){
 				<input type="text" disabled placeholder="<?= $value['LIVRO_CODIGO']; ?>">
 				<p>Prazo para entrega: </p>
 				<input type="text" disabled placeholder="<?= $value['LIVRO_PRAZO']; ?> dias"><br><br>
-				<a href=confPed.php?i=<?= $value['LIVRO_CODIGO']; ?>>Concluir o pedido</a>
-				<?php } }?>
+				<a href="confPed.php?i=<?= $value['LIVRO_CODIGO'];?>">Concluir o pedido</a>
+				<?php endforeach; }?>
 		</center>
 	</div>
 	

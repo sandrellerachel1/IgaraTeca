@@ -42,9 +42,10 @@ $codigo2=substr($codigo, -9);
 
 $stmt=$pdo->prepare("INSERT INTO PEDIDOS SET PED_USER_ID=?, PED_COD_LIVRO=?, PED_STATUS=?, PED_DATA=?, PED_DATA_PRAZO=?, PED_CODIGO=? ");
 $stmt->execute([$usuario, $i, 1, $data, $dataexp, $codigo2]);
+
 if($stmt){
 	$_SESSION['sucesso_pedido']=1;
-	header('location: comprovante.php?i='.$i);
+	header('location: ../pdf/comprovante.php?i='.$i.'&j='.md5($data));
 }
 
  ?>

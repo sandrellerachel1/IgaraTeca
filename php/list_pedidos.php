@@ -104,7 +104,7 @@ if(!isset($_SESSION['usuario'])){
 								<td><?= $value['USER_NOME'];?> </td>
 								<td><?= $value['USER_MATRICULA'];?> </td>
 								<td><?= $value['USER_EMAIL']; ?></td>
-								<td><a href="comprovante.php?i=<?=$livro;?>&j=<?=md5($data);?>" class="icon icon-download"> Baixar PDF</a></td>
+								<td><a href="../pdf/comprovante.php?i=<?=$livro;?>&j=<?=md5($data);?>" class="icon icon-download"> Baixar PDF</a></td>
 								
 							</tr>
 						

@@ -56,7 +56,7 @@ if(!isset($_SESSION['usuario'])){
 
 	<div class="recupera" style="height: 495px;">
 		<center>
-			<h1>Conta</h1>
+			<h1>Meus dados</h1>
 			<?php
 				$usuario=$_SESSION['usuario'];
 				$stmt=$pdo->prepare("SELECT * FROM USUARIOS WHERE USER_NOME=? ");

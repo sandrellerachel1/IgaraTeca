@@ -12,6 +12,7 @@ include('conexao.php');
 		if($value['USER_NOME']==$usuario && $value['USER_SENHA']==$senha && $value['USER_STATUS']=='1'){
 			$_SESSION['usuario']=$usuario;
 			$_SESSION['id']=$value['USER_ID'];
+			$_SESSION['email']=$value['USER_EMAIL'];
 
 			header('location:../index.php');
 			exit();

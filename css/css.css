@@ -44,7 +44,6 @@ body{
 .star.full{
     background:linear-gradient(to bottom, #fee24f, #f4bb2f);
 }
-
 .bg{
     float:left;
     height:30px;
@@ -804,13 +803,13 @@ header nav ul li a:hover {
 
 .users_online{
     position: absolute;
-    top: 0;
-   
+    top: 105px;
     right: 0;
     width: 220px;
     height: 100%;
     background: linear-gradient(to right, #ccc, #fff 30%);
     border-left: 1px solid #999;
+    opacity: 0.9;
 }
 .users_online ul{
     list-style: none;
@@ -909,6 +908,9 @@ header nav ul li a:hover {
     height: 230px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+.msg{
+    height: 25px;
 }
 .window .body .send_message{
     float: left;
@@ -1149,6 +1151,9 @@ table{
 }
 .teste{
     width: 55%;
+}
+.users_online{
+    top: 80px;
 }
 }
 

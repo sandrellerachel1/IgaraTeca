@@ -59,6 +59,7 @@ include('conexao.php');
 				<input class="submit" type="submit" value="Buscar"><br>
 			</form>
 	<div class="row">
+	
 	<?php
 	if(isset($_SESSION['usuario']) && $_SESSION['usuario']=='Teste'){ ?>
 	
