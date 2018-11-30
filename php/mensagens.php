@@ -24,12 +24,12 @@ foreach ($resultado as $value) {
 		'janela_id' => $janela_de
 	 );
 }
-/*if($stmt){
+if($stmt){
 	echo 'true';
 }
 else{
 	echo 'false';
-}*/
+}
 	die(json_encode($mensagens));
 
 

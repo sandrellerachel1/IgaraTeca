@@ -800,7 +800,7 @@ header nav ul li a:hover {
     background:#585858;
     border-radius: 4px;
 }
-
+/*Estilo ddo chat*/
 .users_online{
     position: absolute;
     top: 105px;
@@ -955,7 +955,6 @@ header nav ul li a:hover {
 .mensagens ul li.eu{
     float: left;
     background: #a4e9ff;
-
 }
 .mensagens ul li{
     margin-left: 5px;
@@ -974,6 +973,7 @@ header nav ul li a:hover {
 .mensagens::-webkit-scrollbar-thumb:hover{
     background-color: #069;
 }
+/*final do estilo do chat*/
 
 @media screen and (max-width:768px) {
 /* Div do menu mobile*/

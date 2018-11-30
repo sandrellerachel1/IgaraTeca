@@ -13,12 +13,12 @@ if (!isset($_SESSION['usuario'])) {
 	<title>Chat-Igarateca</title>
 	<link rel="stylesheet" type="text/css" href="../css/css.css">
 	<link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
-	<script type="text/javascript" src="../js/teste.js"></script>
-	<script type="text/javascript"> $.noConflict();</script>
-	<script type="text/javascript" src="../js/menu.js"></script>
-
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script type="text/javascript" src="../js/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="../demo-files/demo.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<script type="text/javascript" src="../js/menu.js"></script>
+	
+	<script type="text/javascript" src="../js/functions.js"></script>	
 </head>
 <body>
 	<div class="home">
@@ -75,7 +75,6 @@ if (!isset($_SESSION['usuario'])) {
 
 	</aside>
 		
-	<script type="text/javascript" src="../js/functions.js"></script>	
 </body>
 </html>
 		
