@@ -9,7 +9,7 @@ if(!isset($_SESSION['usuario'])){
 <html lang="pt-br">
 <head>
 	<meta charset=UTF-8">
-    <title>Login</title>
+    <title>Alterar senha</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">
@@ -52,7 +52,7 @@ if(!isset($_SESSION['usuario'])){
 		</header>
 	</div>
 
-	<div class="recupera">
+	<div class="recupera" style="background: none;">
 		<center>
 			<form method="POST" action="recupera2.php">
 				<h1>Alterar senha</h1>
@@ -73,12 +73,10 @@ if(!isset($_SESSION['usuario'])){
 				<input type="password" name="novasenha" placeholder="Nova senha" required=""><br>
 				<p>Confirmar senha</p>
 				<input type="password" name="novasenha2" placeholder="Confirmar nova senha" required=""><br>
-				<input type="submit" value="Redefinir">
+				<input type="submit" value="Alterar senha">
 			</form>
 		</center>
 	</div>
-
-
 
 	<div class="copyright">
 	<p>©Copyright 2018</p>

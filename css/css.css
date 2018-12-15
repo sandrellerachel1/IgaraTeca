@@ -6,7 +6,7 @@
 }
 body{
     padding: 13px 0px;
-	background-image: url('../img/9.jpg');
+	background-image: url('../img/book.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -312,10 +312,13 @@ div.slide section.botao a:hover{
 }
 .acervo span{
     font-size: 40px;
-    color: blue;
+    color: #A9A9F5;
 }
 .acervo label{
-    color: blue;
+    color: #A9A9F5;
+}
+.acervo p{
+    color: white;
 }
 .acesso{
     margin:auto;
@@ -324,13 +327,13 @@ div.slide section.botao a:hover{
 }
 .acesso span{
     font-size: 40px;
-    color: blue;
+    color: #A9A9F5;
 }
 .acesso label{
-    color: blue;
+    color: #A9A9F5;
 }
 .acesso p{
-    
+    color: white;   
 }
 /*rodapé*/
 .copyright {
@@ -364,7 +367,7 @@ table tr:nth-child(2n){
 /*div de login*/
 .login{
     width: 360px;
-    height: 410px;
+    height: 420px;
     background: #D8D8D8;
     opacity: 0.80;
     color: black;
@@ -664,6 +667,7 @@ div.book{
     border-radius: 20px;
     cursor: pointer;
 }
+
 /*lista pedidos (medio)*/
 .lista{
     width: 80%;
@@ -1047,7 +1051,8 @@ header nav ul li a{
     height: 125px;
     margin: auto;
     margin-top: -40px;
-    margin-bottom: 40px;
+    margin-bottom: 160px;
+    color: white;
 }
 .home #logotipo{
     margin-top: 2px;
@@ -1061,6 +1066,24 @@ header nav ul li a{
 .sobre{
     margin-top: 60px;
 }
+.sobre p{
+    color: white;
+}
+.sobre h2{
+    color: white;
+}
+.sobre input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #0080FF;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 140px;
+    margin-bottom: 20px;
+}
 .h2{
     margin-top: 115px; 
 }
@@ -1071,6 +1094,9 @@ header nav ul li a{
     margin-bottom: -240px;
 }
 /*Página dos livros (mobile)*/
+.livro{
+    margin-bottom: 207px;
+}
 .livro .grid{
     width: 340px;
 }
@@ -1139,11 +1165,13 @@ header nav ul li a{
     margin-top: 40px;
     margin-bottom: 60px;
 }
+
 .recupera a{
     color: blue;
 }
 table{
     width: 50%;
+    margin-bottom: 215px;
 }
 /*Pesquisa dos livros (mobile)*/
 .form_busca{

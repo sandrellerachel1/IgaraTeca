@@ -17,6 +17,7 @@ require '../Mail/vendor/autoload.php';
 	$usuario= addslashes($_POST['usuario']);
 	$senha=md5(addslashes($_POST['senha']));
 	$email=addslashes($_POST['email']);
+	$status='1';
 	$matricula=addslashes($_POST['matricula']);
 
 	//Verifica se o usuario ou email já existe
@@ -49,8 +50,8 @@ require '../Mail/vendor/autoload.php';
 if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$_SESSION['cadastro_sucesso'] = 1;
 
-	$stmt=$pdo->prepare("INSERT INTO USUARIOS SET USER_NOME= ?, USER_MATRICULA=?, USER_SENHA= ?, USER_EMAIL= ? ");
-	$stmt->execute([$usuario, $matricula, $senha, $email]);
+	$stmt=$pdo->prepare("INSERT INTO USUARIOS SET USER_NOME= ?, USER_MATRICULA=?, USER_SENHA= ?, USER_STATS=?, USER_EMAIL= ? ");
+	$stmt->execute([$usuario, $matricula, $senha, $status, $email]);
 
 	//Envio de e-mail para confirmar o usuário 
 	$id=$pdo->lastInsertId();
@@ -68,7 +69,7 @@ if(filter_var($email, FILTER_VALIDATE_EMAIL)){
 	$mail->Password = "igara8643";
 	$mail->setFrom('igaratecasuporte@gmail.com', 'Igarateca');
 	$mail->addAddress($email, $usuario);
-	$mail->Subject = 'Confirme seu cadastro no Igarateca'.$data;
+	$mail->Subject = 'Confirme seu cadastro no Igarateca';
 	$mail->IsHTML(true);
 	$mail->Body = $mensagem;
 	$mail->AltBody = $mensagem;

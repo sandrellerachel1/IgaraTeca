@@ -10,7 +10,7 @@ if(!isset($_SESSION['usuario'])){
 <html lang="pt-br">
 <head>
 	<meta charset=UTF-8">
-    <title>Login</title>
+    <title>Meus dados</title>
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="shortcut icon" type="image/x-png" href="../img/logo2.png">

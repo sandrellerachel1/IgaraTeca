@@ -34,10 +34,12 @@ $(function(){
 				else{
 					alert('Não encontrou as mensagens');
 				}*/
-				//$(retorno).each(function(i, msg){
-				$.each(retorno, function(i, msg){
+				$(retorno).each(function(i, msg){
+				//$.each(retorno, function(i, msg){
+					alert('teste');
+
+					if($('#janela_'+msg.janela_de)){
 					console.log(i, msg);
-					if($('#janela_'+msg.janela_de).length > 0){
 						alert('mais');
 						if(my_id==msg.id_de){
 							$('#janela'+msg.janela_de+'.mensagens ul').append('<li id="'+msg.id+'" class="eu"><p>'+msg.mensagem+'</p></li>');	

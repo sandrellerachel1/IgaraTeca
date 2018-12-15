@@ -8,11 +8,11 @@ session_start();
 	<title>IgaraTeca</title>
 	
 	<link rel="stylesheet" type="text/css" href="css/css.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 	<link rel="shortcut icon" type="image/x-png" href="img/logo2.png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="demo-files/demo.css">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.cycle.all.js"></script>
-	<link rel="stylesheet" type="text/css" href="demo-files/demo.css">
 	<script type="text/javascript" src="js/menu.js"></script>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<script type="text/javascript">
@@ -103,7 +103,7 @@ session_start();
 			</div>
 		</div>
 	</center>
-
+	
 	<div class="copyright">
 	<p>©Copyright 2018</p>
 	</div>
